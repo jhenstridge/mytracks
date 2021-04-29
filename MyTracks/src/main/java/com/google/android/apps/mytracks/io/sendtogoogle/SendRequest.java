@@ -21,8 +21,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Send request states for sending a track to Google Drive, Google Maps, Google
- * Fusion Tables, and Google Spreadsheets.
+ * Send request states for sending a track to Google Drive, Google Maps, and Google
+ * Spreadsheets.
  * 
  * @author Jimmy Shih
  */
@@ -33,7 +33,6 @@ public class SendRequest implements Parcelable {
   private long trackId = -1L;
   private boolean sendDrive = false;
   private boolean sendMaps = false;
-  private boolean sendFusionTables = false;
   private boolean sendSpreadsheets = false;
 
   private boolean driveSync = false; // to enable Drive sync 
@@ -45,7 +44,6 @@ public class SendRequest implements Parcelable {
   private boolean driveSuccess = false;
   private boolean mapsSuccess = false;
   private boolean spreadsheetsSuccess = false;
-  private boolean fusionTablesSuccess = false;
   private String shareUrl = null;
 
   /**
@@ -75,14 +73,6 @@ public class SendRequest implements Parcelable {
 
   public void setSendMaps(boolean sendMaps) {
     this.sendMaps = sendMaps;
-  }
-
-  public boolean isSendFusionTables() {
-    return sendFusionTables;
-  }
-
-  public void setSendFusionTables(boolean sendFusionTables) {
-    this.sendFusionTables = sendFusionTables;
   }
 
   public boolean isSendSpreadsheets() {
@@ -141,14 +131,6 @@ public class SendRequest implements Parcelable {
     this.mapsSuccess = mapsSuccess;
   }
 
-  public boolean isFusionTablesSuccess() {
-    return fusionTablesSuccess;
-  }
-
-  public void setFusionTablesSuccess(boolean fusionTablesSuccess) {
-    this.fusionTablesSuccess = fusionTablesSuccess;
-  }
-
   public boolean isSpreadsheetsSuccess() {
     return spreadsheetsSuccess;
   }
@@ -169,7 +151,6 @@ public class SendRequest implements Parcelable {
     trackId = in.readLong();
     sendDrive = in.readByte() == 1;
     sendMaps = in.readByte() == 1;
-    sendFusionTables = in.readByte() == 1;
     sendSpreadsheets = in.readByte() == 1;
     driveSync = in.readByte() == 1;
     driveSharePublic = in.readByte() == 1;
@@ -177,7 +158,6 @@ public class SendRequest implements Parcelable {
     account = in.readParcelable(null);
     driveSuccess = in.readByte() == 1;
     mapsSuccess = in.readByte() == 1;
-    fusionTablesSuccess = in.readByte() == 1;
     spreadsheetsSuccess = in.readByte() == 1;
     shareUrl = in.readString();
   }
@@ -192,7 +172,6 @@ public class SendRequest implements Parcelable {
     out.writeLong(trackId);
     out.writeByte((byte) (sendDrive ? 1 : 0));
     out.writeByte((byte) (sendMaps ? 1 : 0));
-    out.writeByte((byte) (sendFusionTables ? 1 : 0));
     out.writeByte((byte) (sendSpreadsheets ? 1 : 0));
     out.writeByte((byte) (driveSync ? 1 : 0));
     out.writeByte((byte) (driveSharePublic ? 1 : 0));
@@ -200,7 +179,6 @@ public class SendRequest implements Parcelable {
     out.writeParcelable(account, 0);
     out.writeByte((byte) (driveSuccess ? 1 : 0));
     out.writeByte((byte) (mapsSuccess ? 1 : 0));
-    out.writeByte((byte) (fusionTablesSuccess ? 1 : 0));
     out.writeByte((byte) (spreadsheetsSuccess ? 1 : 0));
     out.writeString(shareUrl);
   }

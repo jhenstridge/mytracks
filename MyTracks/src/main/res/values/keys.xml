@@ -26,7 +26,6 @@ limitations under the License.
   <string name="chart_x_axis_key">chartXAxis</string>
   <string name="default_activity_key">defaultActivity</string>
   <string name="export_external_storage_format_key">exportExternalStorageFormat</string>
-  <string name="export_google_fusion_tables_public_key">exportGoogleFusionTablesPublic</string>
   <string name="export_google_maps_public_key">exportGoogleMapsPublic</string>
   <string name="export_type_key">exportType</string>
   <string name="map_type_key">mapType</string>

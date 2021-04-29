@@ -46,7 +46,6 @@
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-core-1.0.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-spreadsheet-3.0.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-spreadsheet-meta-3.0.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-api-services-fusiontables-v1-rev16-1.12.0-beta.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-common.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/libGoogleAnalytics.jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:23.1.1" level="project" />

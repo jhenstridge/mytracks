@@ -16,7 +16,6 @@
 
 package com.google.android.apps.mytracks.io.drive;
 
-import com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesActivity;
 import com.google.android.apps.mytracks.io.maps.SendMapsActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
@@ -62,8 +61,6 @@ public class SendDriveActivity extends AbstractSendActivity {
     } else {
       if (sendRequest.isSendMaps()) {
         return SendMapsActivity.class;
-      } else if (sendRequest.isSendFusionTables()) {
-        return SendFusionTablesActivity.class;
       } else if (sendRequest.isSendSpreadsheets()) {
         return SendSpreadsheetsActivity.class;
       } else {

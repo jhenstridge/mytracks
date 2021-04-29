@@ -55,7 +55,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
   public enum ExportType {
     GOOGLE_DRIVE(R.string.export_google_drive),
     GOOGLE_MAPS(R.string.export_google_maps),
-    GOOGLE_FUSION_TABLES(R.string.export_google_fusion_tables),
     GOOGLE_SPREADSHEET(R.string.export_google_spreadsheets),
     EXTERNAL_STORAGE(R.string.export_external_storage);
     final int resId;
@@ -103,7 +102,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
   // UI elements
   private Spinner exportTypeOptions;
   private RadioGroup exportGoogleMapsOptions;
-  private RadioGroup exportGoogleFusionTablesOptions;
   private RadioGroup exportExternalStorageOptions;
   private Spinner accountSpinner;
 
@@ -127,8 +125,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
     View view = fragmentActivity.getLayoutInflater().inflate(R.layout.export, null);
     exportTypeOptions = (Spinner) view.findViewById(R.id.export_type_options);
     exportGoogleMapsOptions = (RadioGroup) view.findViewById(R.id.export_google_maps_options);
-    exportGoogleFusionTablesOptions = (RadioGroup) view.findViewById(
-        R.id.export_google_fusion_tables_options);
     exportExternalStorageOptions = (RadioGroup) view.findViewById(
         R.id.export_external_storage_options);
     accountSpinner = (Spinner) view.findViewById(R.id.export_account);
@@ -141,14 +137,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
         R.string.export_google_maps_public_key, PreferencesUtils.EXPORT_GOOGLE_MAPS_PUBLIC_DEFAULT);
     exportGoogleMapsOptions.check(
         exportGoogleMapsPublic ? R.id.export_google_maps_public : R.id.export_google_maps_unlisted);
-
-    // Setup exportGoogleFusionTablesOptions
-    boolean exportGoogleFusionTablesPublic = PreferencesUtils.getBoolean(fragmentActivity,
-        R.string.export_google_fusion_tables_public_key,
-        PreferencesUtils.EXPORT_GOOGLE_FUSION_TABLES_PUBLIC_DEFAULT);
-    exportGoogleFusionTablesOptions.check(
-        exportGoogleFusionTablesPublic ? R.id.export_google_fusion_tables_public
-            : R.id.export_google_fusion_tables_private);
 
     // Setup exportExternalStorageOptions
     setExternalStorageOption(
@@ -182,10 +170,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
               PreferencesUtils.setBoolean(context, R.string.export_google_maps_public_key,
                   exportGoogleMapsOptions.getCheckedRadioButtonId()
                   == R.id.export_google_maps_public);
-            } else if (type == ExportType.GOOGLE_FUSION_TABLES) {
-              PreferencesUtils.setBoolean(context, R.string.export_google_fusion_tables_public_key,
-                  exportGoogleFusionTablesOptions.getCheckedRadioButtonId()
-                  == R.id.export_google_fusion_tables_public);
             } else if (type == ExportType.EXTERNAL_STORAGE) {
               format = getTrackFileFormat(exportExternalStorageOptions.getCheckedRadioButtonId());
               PreferencesUtils.setString(
@@ -222,7 +206,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
         exportTypeOptionsList.add(ExportType.GOOGLE_DRIVE);
       }
       exportTypeOptionsList.add(ExportType.GOOGLE_MAPS);
-      exportTypeOptionsList.add(ExportType.GOOGLE_FUSION_TABLES);
       exportTypeOptionsList.add(ExportType.GOOGLE_SPREADSHEET);
     }
     exportTypeOptionsList.add(ExportType.EXTERNAL_STORAGE);
@@ -245,8 +228,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
         ExportType type = exportTypeOptionsList.get(position);
         exportGoogleMapsOptions.setVisibility(
             type == ExportType.GOOGLE_MAPS ? View.VISIBLE : View.GONE);
-        exportGoogleFusionTablesOptions.setVisibility(
-            type == ExportType.GOOGLE_FUSION_TABLES ? View.VISIBLE : View.GONE);
         exportExternalStorageOptions.setVisibility(
             type == ExportType.EXTERNAL_STORAGE ? View.VISIBLE : View.GONE);
         accountSpinner.setVisibility(

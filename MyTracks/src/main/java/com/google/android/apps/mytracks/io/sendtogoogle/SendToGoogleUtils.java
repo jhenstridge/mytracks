@@ -23,7 +23,6 @@ import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.maps.mytracks.R;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.services.drive.DriveScopes;
-import com.google.api.services.fusiontables.FusiontablesScopes;
 import com.google.common.annotations.VisibleForTesting;
 
 import android.app.NotificationManager;
@@ -50,17 +49,14 @@ public class SendToGoogleUtils {
   public static final String DRIVE_SCOPE = DriveScopes.DRIVE;
   public static final int DRIVE_NOTIFICATION_ID = 1;
 
-  public static final String FUSION_TABLES_SCOPE = FusiontablesScopes.FUSIONTABLES;
-  public static final int FUSION_TABLES_NOTIFICATION_ID = 2;
-
   public static final String SPREADSHEETS_SCOPE = "https://spreadsheets.google.com/feeds";
   public static final int SPREADSHEETS_NOTIFICATION_ID = 3;
   
   private SendToGoogleUtils() {}
 
   /**
-   * Prepares a list of locations to send to Google Maps or Google Fusion
-   * Tables. Splits the locations into segments if necessary.
+   * Prepares a list of locations to send to Google Maps. Splits the locations into segments
+   * if necessary.
    * 
    * @param track the track
    * @param locations the list of locations
@@ -127,7 +123,7 @@ public class SendToGoogleUtils {
     segment.getTripStatistics().setStopTime(stopTime);
 
     /*
-     * Decimate to 2 meter precision. Google Maps and Google Fusion Tables do
+     * Decimate to 2 meter precision. Google Maps do
      * not like the locations to be too precise.
      */
     LocationUtils.decimate(segment, 2.0);

@@ -88,10 +88,6 @@ public class UploadResultActivity extends FragmentActivity implements ChooseActi
       serviceName = R.string.export_google_maps;
       serviceUrl = R.string.export_google_maps_url;
       success = sendRequest.isMapsSuccess();
-    } else if (sendRequest.isSendFusionTables()) {
-      serviceName = R.string.export_google_fusion_tables;
-      serviceUrl = R.string.export_google_fusion_tables_url;
-      success = sendRequest.isFusionTablesSuccess();
     } else {
       serviceName = R.string.export_google_spreadsheets;
       serviceUrl = R.string.export_google_spreadsheets_url;

@@ -67,7 +67,6 @@ public class PreferencesUtils {
   public static final boolean DRIVE_SYNC_DEFAULT = false;
 
   public static final String EXPORT_EXTERNAL_STORAGE_FORMAT_DEFAULT = TrackFileFormat.KML.name();
-  public static final boolean EXPORT_GOOGLE_FUSION_TABLES_PUBLIC_DEFAULT = false;
   public static final boolean EXPORT_GOOGLE_MAPS_PUBLIC_DEFAULT = false;
   public static final String EXPORT_TYPE_DEFAULT = ExportType.GOOGLE_DRIVE.name();
   

@@ -37,8 +37,6 @@ import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccoun
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
-import com.google.api.services.fusiontables.Fusiontables;
-import com.google.api.services.fusiontables.model.Table;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
 import com.google.gdata.data.spreadsheet.ListEntry;
 import com.google.gdata.data.spreadsheet.ListFeed;
@@ -58,7 +56,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Utilities for accessing Google Drive, Google Maps, Google Fusion Tables, and
+ * Utilities for accessing Google Drive, Google Maps, and
  * Google Spreadsheets.
  * 
  * @author Youtao Liu
@@ -160,39 +158,6 @@ public class GoogleUtils {
         Log.e(TAG, "Unable to delete maps.", e);
       }
     }
-  }
-
-  /**
-   * Deletes Google Fusion Tables.
-   * 
-   * @param context the context
-   * @param accountName the account name
-   * @param tableName the table name
-   * @return true if deletion is success.
-   */
-  public static boolean deleteFusionTables(Context context, String accountName, String tableName) {
-    try {
-      GoogleAccountCredential googleAccountCredential = SendToGoogleUtils
-          .getGoogleAccountCredential(context, accountName, SendToGoogleUtils.FUSION_TABLES_SCOPE);
-      if (googleAccountCredential == null) {
-        return false;
-      }
-      Fusiontables fusiontables = new Fusiontables.Builder(
-          AndroidHttp.newCompatibleTransport(), new GsonFactory(), googleAccountCredential).build();
-      List<Table> tables = fusiontables.table().list().execute().getItems();
-      Iterator<Table> iterator = tables.iterator();
-      while (iterator.hasNext()) {
-        Table table = (Table) iterator.next();
-        String name = table.getName();
-        if (name != null && name.equals(tableName)) {
-          fusiontables.table().delete(table.getTableId()).execute();
-          return true;
-        }
-      }
-    } catch (Exception e) {
-      Log.e(TAG, "Unable to search fusion tables.", e);
-    }
-    return false;
   }
 
   /**

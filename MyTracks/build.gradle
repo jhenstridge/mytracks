@@ -35,7 +35,6 @@ dependencies {
         exclude group: 'com.google.android.google-play-services', module: 'google-play-services'
     }
     compile 'com.google.apis:google-api-services-drive:v2-rev64-1.13.2-beta'
-    compile files('libs/google-api-services-fusiontables-v1-rev16-1.12.0-beta.jar')
     compile files('libs/google-common.jar')
     compile 'com.google.http-client:google-http-client:1.20.0'
     compile 'com.google.http-client:google-http-client-android:1.20.0'

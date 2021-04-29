@@ -25,7 +25,6 @@ import com.google.android.apps.mytracks.fragments.ShareTrackDialogFragment.Share
 import com.google.android.apps.mytracks.io.drive.SendDriveActivity;
 import com.google.android.apps.mytracks.io.file.TrackFileFormat;
 import com.google.android.apps.mytracks.io.file.exporter.SaveActivity;
-import com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesActivity;
 import com.google.android.apps.mytracks.io.gdata.maps.MapsConstants;
 import com.google.android.apps.mytracks.io.maps.SendMapsActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
@@ -77,7 +76,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
   private static final String TAG = AbstractMyTracksActivity.class.getSimpleName();
   private static final String SEND_REQUEST_KEY = "send_request_key";
   private static final int DRIVE_REQUEST_CODE = 0;
-  private static final int FUSION_TABLES_REQUEST_CODE = 1;
   private static final int SPREADSHEETS_REQUEST_CODE = 2;
   private static final int DELETE_REQUEST_CODE = 3;
   protected static final int GOOGLE_PLAY_SERVICES_REQUEST_CODE = 4;
@@ -120,14 +118,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
         SendToGoogleUtils.cancelNotification(this, SendToGoogleUtils.DRIVE_NOTIFICATION_ID);
         if (resultCode == Activity.RESULT_OK) {
           onDrivePermissionSuccess();
-        } else {
-          onPermissionFailure();
-        }
-        break;
-      case FUSION_TABLES_REQUEST_CODE:
-        SendToGoogleUtils.cancelNotification(this, SendToGoogleUtils.FUSION_TABLES_NOTIFICATION_ID);
-        if (resultCode == Activity.RESULT_OK) {
-          onFusionTablesSuccess();
         } else {
           onPermissionFailure();
         }
@@ -181,10 +171,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
         pageView = AnalyticsUtils.ACTION_EXPORT_MAPS;
         sendRequest.setSendMaps(true);
         break;
-      case GOOGLE_FUSION_TABLES:
-        pageView = AnalyticsUtils.ACTION_EXPORT_FUSION_TABLES;
-        sendRequest.setSendFusionTables(true);
-        break;
       default:
         pageView = AnalyticsUtils.ACTION_EXPORT_SPREADSHEETS;
         sendRequest.setSendSpreadsheets(true);
@@ -211,11 +197,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
   private void checkPermissions() {
     // Check Drive permission
     boolean needDrivePermission = sendRequest.isSendDrive();
-    if (!needDrivePermission && sendRequest.isSendFusionTables()) {
-      needDrivePermission = PreferencesUtils.getBoolean(this,
-          R.string.export_google_fusion_tables_public_key,
-          PreferencesUtils.EXPORT_GOOGLE_FUSION_TABLES_PUBLIC_DEFAULT);
-    }
     if (!needDrivePermission) {
       needDrivePermission = sendRequest.isSendSpreadsheets();
     }
@@ -243,8 +224,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
     if (success) {
       if (scope.equals(SendToGoogleUtils.DRIVE_SCOPE)) {
         onDrivePermissionSuccess();
-      } else if (scope.equals(SendToGoogleUtils.FUSION_TABLES_SCOPE)) {
-        onFusionTablesSuccess();
       } else {
         onSpreadsheetsPermissionSuccess();
       }
@@ -253,8 +232,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
         int requestCode;
         if (scope.equals(SendToGoogleUtils.DRIVE_SCOPE)) {
           requestCode = DRIVE_REQUEST_CODE;
-        } else if (scope.equals(SendToGoogleUtils.FUSION_TABLES_SCOPE)) {
-          requestCode = FUSION_TABLES_REQUEST_CODE;
         } else {
           requestCode = SPREADSHEETS_REQUEST_CODE;
         }
@@ -306,15 +283,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
   }
 
   private void onMapsPermissionSuccess() {
-    // Check Fusion Tables permission
-    if (sendRequest.isSendFusionTables()) {
-      startCheckPermission(SendToGoogleUtils.FUSION_TABLES_SCOPE);
-    } else {
-      onFusionTablesSuccess();
-    }
-  }
-
-  private void onFusionTablesSuccess() {
     // Check Spreadsheets permission
     if (sendRequest.isSendSpreadsheets()) {
       startCheckPermission(SendToGoogleUtils.SPREADSHEETS_SCOPE);
@@ -332,8 +300,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
    * <p>
    * isSendMaps -> start {@link SendMapsActivity}
    * <p>
-   * isSendFusionTables -> start {@link SendFusionTablesActivity}
-   * <p>
    * isSendSpreadsheets -> start {@link SendSpreadsheetsActivity}
    * <p>
    * else -> start {@link UploadResultActivity}
@@ -349,8 +315,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
       }
     } else if (sendRequest.isSendMaps()) {
       next = SendMapsActivity.class;
-    } else if (sendRequest.isSendFusionTables()) {
-      next = SendFusionTablesActivity.class;
     } else if (sendRequest.isSendSpreadsheets()) {
       next = SendSpreadsheetsActivity.class;
     } else {

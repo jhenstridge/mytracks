@@ -15,7 +15,6 @@
  */
 package com.google.android.apps.mytracks.io.maps;
 
-import com.google.android.apps.mytracks.io.fusiontables.SendFusionTablesActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
@@ -59,9 +58,7 @@ public class SendMapsActivity extends AbstractSendActivity {
     if (isCancel) {
       return UploadResultActivity.class;
     } else {
-      if (request.isSendFusionTables()) {
-        return SendFusionTablesActivity.class;
-      } else if (request.isSendSpreadsheets()) {
+      if (request.isSendSpreadsheets()) {
         return SendSpreadsheetsActivity.class;
       } else {
         return UploadResultActivity.class;

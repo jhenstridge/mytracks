@@ -115,9 +115,6 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
     assertTrue(GoogleUtils.deleteMaps(
         activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1,
         EndToEndTestUtils.trackName));
-    assertTrue(GoogleUtils.deleteFusionTables(
-        activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1,
-        EndToEndTestUtils.trackName));
     assertTrue(GoogleUtils.deleteSpreadsheetsRow(
         activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1,
         EndToEndTestUtils.trackName));
