@@ -26,7 +26,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
     <output url="file://$MODULE_DIR$/../../../MyTracksLib/build/intermediates/javac/debug/classes" />
     <output-test url="file://$MODULE_DIR$/../../../MyTracksLib/build/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
@@ -42,7 +42,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksLib/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksLib/build" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.15.8" level="project" />
   </component>

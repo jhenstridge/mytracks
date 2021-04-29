@@ -143,6 +143,9 @@ limitations under the License.
     android:label="@string/my_tracks_app_name"
     android:theme="@style/ThemeMyTracks"
     tools:replace="android:label">
+    <meta-data
+      android:name="com.google.android.gms.version"
+      android:value="@integer/google_play_services_version" />
     <!-- For data backup -->
     <meta-data
       android:name="com.google.android.backup.api_key"

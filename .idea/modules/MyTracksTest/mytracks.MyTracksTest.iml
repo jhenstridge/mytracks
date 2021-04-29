@@ -26,7 +26,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
     <output url="file://$MODULE_DIR$/../../../MyTracksTest/build/intermediates/javac/debug/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../MyTracksTest">
@@ -37,7 +37,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksTest/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksTest/build" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: ./MyTracksTest/libs/AndroidMockGenerator.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/antlib.jar" level="project" />
@@ -46,36 +46,35 @@
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-core-1.0.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-spreadsheet-3.0.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-spreadsheet-meta-3.0.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-api-client-1.12.0-beta.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-api-client-android-1.12.0-beta.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-api-services-drive-v2-rev30-1.12.0-beta.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-api-services-fusiontables-v1-rev16-1.12.0-beta.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-common.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/libGoogleAnalytics.jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:23.1.1" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="Gradle: com.android.support:support-v4:18.0.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-gson:1.12.0-beta" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-gson:1.20.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-android:1.12.0-beta" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-jackson:1.12.0-beta" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-jackson2:1.12.0-beta" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.oauth-client:google-oauth-client:1.12.0-beta" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client:1.12.0-beta" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client-android:1.13.2-beta" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.apis:google-api-services-drive:v2-rev64-1.13.2-beta" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client:1.13.2-beta" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.oauth-client:google-oauth-client:1.13.1-beta" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava-jdk5:13.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.0.5" level="project" />
-    <orderEntry type="library" name="Gradle: org.codehaus.jackson:jackson-core-asl:1.9.9" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-android:1.20.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-jackson:1.20.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-jackson2:1.20.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client:1.20.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.1.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.codehaus.jackson:jackson-core-asl:1.9.11" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.15.8" level="project" />
-    <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.0.3" level="project" />
-    <orderEntry type="library" name="Gradle: xpp3:xpp3:1.1.4c" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.0.1" level="project" />
     <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.3" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support.test:runner:0.5@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services:5.0.89@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-v4:21.0.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support.test:exposed-instrumentation-api-publish:0.5@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services:3.1.36@aar" level="project" />
     <orderEntry type="module" module-name="mytracks.MyTracksLib" />
     <orderEntry type="module" module-name="mytracks.MyTracks" />
   </component>
