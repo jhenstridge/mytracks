@@ -1,0 +1,9 @@
+local.properties
+import-summary.txt
+.gradle
+/.idea/caches
+/.idea/libraries
+
+build/
+*~
+
