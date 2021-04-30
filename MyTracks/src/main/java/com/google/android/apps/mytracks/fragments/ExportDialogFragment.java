@@ -54,7 +54,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
    */
   public enum ExportType {
     GOOGLE_DRIVE(R.string.export_google_drive),
-    GOOGLE_MAPS(R.string.export_google_maps),
     GOOGLE_SPREADSHEET(R.string.export_google_spreadsheets),
     EXTERNAL_STORAGE(R.string.export_external_storage);
     final int resId;
@@ -101,7 +100,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
   
   // UI elements
   private Spinner exportTypeOptions;
-  private RadioGroup exportGoogleMapsOptions;
   private RadioGroup exportExternalStorageOptions;
   private Spinner accountSpinner;
 
@@ -124,19 +122,12 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
     // Get views
     View view = fragmentActivity.getLayoutInflater().inflate(R.layout.export, null);
     exportTypeOptions = (Spinner) view.findViewById(R.id.export_type_options);
-    exportGoogleMapsOptions = (RadioGroup) view.findViewById(R.id.export_google_maps_options);
     exportExternalStorageOptions = (RadioGroup) view.findViewById(
         R.id.export_external_storage_options);
     accountSpinner = (Spinner) view.findViewById(R.id.export_account);
     
     // Setup exportTypeOptions
     setupExportTypeOptions(fragmentActivity);
-
-    // Setup exportGoogleMapsOptions
-    boolean exportGoogleMapsPublic = PreferencesUtils.getBoolean(fragmentActivity,
-        R.string.export_google_maps_public_key, PreferencesUtils.EXPORT_GOOGLE_MAPS_PUBLIC_DEFAULT);
-    exportGoogleMapsOptions.check(
-        exportGoogleMapsPublic ? R.id.export_google_maps_public : R.id.export_google_maps_unlisted);
 
     // Setup exportExternalStorageOptions
     setExternalStorageOption(
@@ -166,11 +157,7 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
             TrackFileFormat format = null;
 
             PreferencesUtils.setString(context, R.string.export_type_key, type.name());
-            if (type == ExportType.GOOGLE_MAPS) {
-              PreferencesUtils.setBoolean(context, R.string.export_google_maps_public_key,
-                  exportGoogleMapsOptions.getCheckedRadioButtonId()
-                  == R.id.export_google_maps_public);
-            } else if (type == ExportType.EXTERNAL_STORAGE) {
+            if (type == ExportType.EXTERNAL_STORAGE) {
               format = getTrackFileFormat(exportExternalStorageOptions.getCheckedRadioButtonId());
               PreferencesUtils.setString(
                   context, R.string.export_external_storage_format_key, format.name());
@@ -195,7 +182,7 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
         fragmentActivity, R.string.export_type_key, PreferencesUtils.EXPORT_TYPE_DEFAULT));
 
     if (hideDrive && exportType == ExportType.GOOGLE_DRIVE) {
-      exportType = ExportType.GOOGLE_MAPS;
+      exportType = ExportType.GOOGLE_SPREADSHEET;
     }
 
     exportTypeOptionsList = new ArrayList<ExportDialogFragment.ExportType>();
@@ -205,7 +192,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
       if (!hideDrive) {
         exportTypeOptionsList.add(ExportType.GOOGLE_DRIVE);
       }
-      exportTypeOptionsList.add(ExportType.GOOGLE_MAPS);
       exportTypeOptionsList.add(ExportType.GOOGLE_SPREADSHEET);
     }
     exportTypeOptionsList.add(ExportType.EXTERNAL_STORAGE);
@@ -226,8 +212,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
         @Override
       public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         ExportType type = exportTypeOptionsList.get(position);
-        exportGoogleMapsOptions.setVisibility(
-            type == ExportType.GOOGLE_MAPS ? View.VISIBLE : View.GONE);
         exportExternalStorageOptions.setVisibility(
             type == ExportType.EXTERNAL_STORAGE ? View.VISIBLE : View.GONE);
         accountSpinner.setVisibility(

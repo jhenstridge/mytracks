@@ -84,10 +84,6 @@ public class UploadResultActivity extends FragmentActivity implements ChooseActi
       serviceName = R.string.export_google_drive;
       serviceUrl = R.string.export_google_drive_url;
       success = sendRequest.isDriveSuccess();
-    } else if (sendRequest.isSendMaps()) {
-      serviceName = R.string.export_google_maps;
-      serviceUrl = R.string.export_google_maps_url;
-      success = sendRequest.isMapsSuccess();
     } else {
       serviceName = R.string.export_google_spreadsheets;
       serviceUrl = R.string.export_google_spreadsheets_url;

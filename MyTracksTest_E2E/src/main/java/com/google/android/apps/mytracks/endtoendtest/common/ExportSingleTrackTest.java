@@ -47,7 +47,6 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
     instrumentation = getInstrumentation();
     activityMyTracks = getActivity();
 
-    GoogleUtils.deleteAllMaps(activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1);
     GoogleUtils.deleteDriveTestFiles(
         activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1);
     EndToEndTestUtils.setupForAllTest(instrumentation, activityMyTracks);
@@ -103,18 +102,13 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
    * Checks the process of sending track to google.
    */
   private void checkSendTrackToGoogle() {
-    if (!sendToGoogle(activityMyTracks.getString(R.string.export_google_maps))
-        || !sendToGoogle(activityMyTracks.getString(R.string.export_google_fusion_tables))
-        || !sendToGoogle(activityMyTracks.getString(R.string.export_google_spreadsheets))) {
+    if (!sendToGoogle(activityMyTracks.getString(R.string.export_google_spreadsheets))) {
       return;
     }
-    // Check whether all data is correct on Google Drive, Maps, Documents, and
+    // Check whether all data is correct on Google Drive, Documents, and
     // Spreadsheet.
     // assertTrue(SyncTestUtils.checkFile(EndToEndTestUtils.trackName, true,
     // SyncTestUtils.getGoogleDrive(activityMyTracks.getApplicationContext())));
-    assertTrue(GoogleUtils.deleteMaps(
-        activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1,
-        EndToEndTestUtils.trackName));
     assertTrue(GoogleUtils.deleteSpreadsheetsRow(
         activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1,
         EndToEndTestUtils.trackName));

@@ -48,12 +48,6 @@ public class SendRequestTest extends AndroidTestCase {
     assertEquals(1, sendRequest.getTrackId());
   }
 
-  public void testIsSendMaps() {
-    assertEquals(false, sendRequest.isSendMaps());
-    sendRequest.setSendMaps(true);
-    assertEquals(true, sendRequest.isSendMaps());
-  }
-
   /**
    * Tests the method {@link SendRequest#isSendSpreadsheets()}. The value should
    * be set to false which is its default value when it is initialed in setup
@@ -74,17 +68,6 @@ public class SendRequestTest extends AndroidTestCase {
     Account account = new Account(ACCOUNTNAME, ACCOUNTYPE);
     sendRequest.setAccount(account);
     assertEquals(account, sendRequest.getAccount());
-  }
-
-  /**
-   * Tests the method {@link SendRequest#isMapsSuccess()}. The value should be
-   * set to false which is its default value when it is initialed in setup
-   * method.
-   */
-  public void testIsMapsSuccess() {
-    assertEquals(false, sendRequest.isMapsSuccess());
-    sendRequest.setMapsSuccess(true);
-    assertEquals(true, sendRequest.isMapsSuccess());
   }
 
   /**
@@ -109,11 +92,9 @@ public class SendRequestTest extends AndroidTestCase {
     parcel.writeByte((byte) 1);
     parcel.writeByte((byte) 1);
     parcel.writeByte((byte) 1);
-    parcel.writeByte((byte) 1);
     parcel.writeString(DRIVE_SHARE_EMAILS);
     Account account = new Account(ACCOUNTNAME, ACCOUNTYPE);
     parcel.writeParcelable(account, 0);
-    parcel.writeByte((byte) 1);
     parcel.writeByte((byte) 1);
     parcel.writeByte((byte) 1);
     parcel.writeString(SHARE_URL);
@@ -121,14 +102,12 @@ public class SendRequestTest extends AndroidTestCase {
     sendRequest = SendRequest.CREATOR.createFromParcel(parcel);
     assertEquals(2, sendRequest.getTrackId());
     assertTrue(sendRequest.isSendDrive());
-    assertTrue(sendRequest.isSendMaps());
     assertTrue(sendRequest.isSendSpreadsheets());
     assertTrue(sendRequest.isDriveSync());
     assertTrue(sendRequest.isDriveSharePublic());
     assertEquals(DRIVE_SHARE_EMAILS, sendRequest.getDriveShareEmails());
     assertEquals(account, sendRequest.getAccount());
     assertTrue(sendRequest.isDriveSuccess());
-    assertTrue(sendRequest.isMapsSuccess());
     assertTrue(sendRequest.isSpreadsheetsSuccess());
     assertEquals(SHARE_URL, sendRequest.getShareUrl());
   }
@@ -144,11 +123,9 @@ public class SendRequestTest extends AndroidTestCase {
     parcel.writeByte((byte) 0);
     parcel.writeByte((byte) 0);
     parcel.writeByte((byte) 0);
-    parcel.writeByte((byte) 0);
     parcel.writeString(null);
     Account account = new Account(ACCOUNTNAME, ACCOUNTYPE);
     parcel.writeParcelable(account, 0);
-    parcel.writeByte((byte) 0);
     parcel.writeByte((byte) 0);
     parcel.writeByte((byte) 0);
     parcel.writeString(null);
@@ -156,14 +133,12 @@ public class SendRequestTest extends AndroidTestCase {
     sendRequest = SendRequest.CREATOR.createFromParcel(parcel);
     assertEquals(4, sendRequest.getTrackId());
     assertFalse(sendRequest.isSendDrive());
-    assertFalse(sendRequest.isSendMaps());
     assertFalse(sendRequest.isSendSpreadsheets());
     assertFalse(sendRequest.isDriveSync());
       assertFalse(sendRequest.isDriveSharePublic());
     assertNull(sendRequest.getDriveShareEmails());
     assertEquals(account, sendRequest.getAccount());
     assertFalse(sendRequest.isDriveSuccess());
-    assertFalse(sendRequest.isMapsSuccess());
     assertFalse(sendRequest.isSpreadsheetsSuccess());
     assertNull(sendRequest.getShareUrl());
   }
@@ -179,26 +154,22 @@ public class SendRequestTest extends AndroidTestCase {
     parcel.setDataPosition(0);
     long trackId = parcel.readLong();
     boolean sendDrive = parcel.readByte() == 1;
-    boolean sendMaps = parcel.readByte() == 1;
     boolean sendSpreadsheets = parcel.readByte() == 1;
     boolean driveSync = parcel.readByte() == 1;
     boolean driveSharePublic = parcel.readByte() == 1;
     String dirveShareEmails = parcel.readString();
     Parcelable account = parcel.readParcelable(null);
     boolean driveSuccess = parcel.readByte() == 1;
-    boolean mapsSuccess = parcel.readByte() == 1;
     boolean spreadsheetsSuccess = parcel.readByte() == 1;
     String shareUrl = parcel.readString();
     assertEquals(1, trackId);
     assertFalse(sendDrive);
-    assertFalse(sendMaps);
     assertFalse(sendSpreadsheets);
     assertFalse(driveSync);
     assertFalse(driveSharePublic);
     assertNull(dirveShareEmails);
     assertNull(account);
     assertFalse(driveSuccess);
-    assertFalse(mapsSuccess);
     assertFalse(spreadsheetsSuccess);
     assertNull(shareUrl);
   }
@@ -209,14 +180,12 @@ public class SendRequestTest extends AndroidTestCase {
   public void testWriteToParcel() {
     sendRequest = new SendRequest(4);
     sendRequest.setSendDrive(true);
-    sendRequest.setSendMaps(true);
     sendRequest.setSendSpreadsheets(true);
     sendRequest.setDriveSync(true);
     sendRequest.setDriveSharePublic(true);
     sendRequest.setDriveShareEmails(DRIVE_SHARE_EMAILS);
     Account accountNew = new Account(ACCOUNTNAME + "2", ACCOUNTYPE + "2");
     sendRequest.setAccount(accountNew);
-    sendRequest.setMapsSuccess(true);
     sendRequest.setDriveSuccess(true);
     sendRequest.setSpreadsheetsSuccess(true);
     sendRequest.setShareUrl(SHARE_URL);
@@ -226,26 +195,22 @@ public class SendRequestTest extends AndroidTestCase {
     parcel.setDataPosition(0);
     long trackId = parcel.readLong();
     boolean sendDrive = parcel.readByte() == 1;
-    boolean sendMaps = parcel.readByte() == 1;
     boolean sendSpreadsheets = parcel.readByte() == 1;
     boolean driveSync = parcel.readByte() == 1;
     boolean driveSharePublic = parcel.readByte() == 1;
     String driveShareEmails = parcel.readString();
     Parcelable account = parcel.readParcelable(null);
     boolean driveSuccess = parcel.readByte() == 1;
-    boolean mapsSuccess = parcel.readByte() == 1;
     boolean spreadsheetsSuccess = parcel.readByte() == 1;
     String shareUrl = parcel.readString();
     assertEquals(4, trackId);
     assertTrue(sendDrive);
-    assertTrue(sendMaps);
     assertTrue(sendSpreadsheets);
     assertTrue(driveSync);
     assertTrue(driveSharePublic);
     assertEquals(DRIVE_SHARE_EMAILS, driveShareEmails);
     assertEquals(accountNew, account);
     assertTrue(driveSuccess);
-    assertTrue(mapsSuccess);
     assertTrue(spreadsheetsSuccess);
     assertEquals(SHARE_URL, shareUrl);
   }

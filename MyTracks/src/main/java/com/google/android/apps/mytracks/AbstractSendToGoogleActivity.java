@@ -25,8 +25,6 @@ import com.google.android.apps.mytracks.fragments.ShareTrackDialogFragment.Share
 import com.google.android.apps.mytracks.io.drive.SendDriveActivity;
 import com.google.android.apps.mytracks.io.file.TrackFileFormat;
 import com.google.android.apps.mytracks.io.file.exporter.SaveActivity;
-import com.google.android.apps.mytracks.io.gdata.maps.MapsConstants;
-import com.google.android.apps.mytracks.io.maps.SendMapsActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendToGoogleUtils;
 import com.google.android.apps.mytracks.io.sendtogoogle.UploadResultActivity;
@@ -167,10 +165,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
         pageView = AnalyticsUtils.ACTION_EXPORT_DRIVE;
         sendRequest.setSendDrive(true);
         break;
-      case GOOGLE_MAPS:
-        pageView = AnalyticsUtils.ACTION_EXPORT_MAPS;
-        sendRequest.setSendMaps(true);
-        break;
       default:
         pageView = AnalyticsUtils.ACTION_EXPORT_SPREADSHEETS;
         sendRequest.setSendSpreadsheets(true);
@@ -243,46 +237,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
   }
 
   private void onDrivePermissionSuccess() {
-    // Check Maps permission
-    if (sendRequest.isSendMaps()) {
-      AccountManager.get(this).getAuthToken(
-          sendRequest.getAccount(), MapsConstants.SERVICE_NAME, null, this,
-          new AccountManagerCallback<Bundle>() {
-              @Override
-            public void run(AccountManagerFuture<Bundle> future) {
-              try {
-                if (future.getResult().getString(AccountManager.KEY_AUTHTOKEN) != null) {
-                  runOnUiThread(new Runnable() {
-                      @Override
-                    public void run() {
-                      onMapsPermissionSuccess();
-                    }
-                  });
-                  return;
-                } else {
-                  Log.d(TAG, "auth token is null");
-                }
-              } catch (OperationCanceledException e) {
-                Log.d(TAG, "Unable to get auth token", e);
-              } catch (AuthenticatorException e) {
-                Log.d(TAG, "Unable to get auth token", e);
-              } catch (IOException e) {
-                Log.d(TAG, "Unable to get auth token", e);
-              }
-              runOnUiThread(new Runnable() {
-                  @Override
-                public void run() {
-                  onPermissionFailure();
-                }
-              });
-            }
-          }, null);
-    } else {
-      onMapsPermissionSuccess();
-    }
-  }
-
-  private void onMapsPermissionSuccess() {
     // Check Spreadsheets permission
     if (sendRequest.isSendSpreadsheets()) {
       startCheckPermission(SendToGoogleUtils.SPREADSHEETS_SCOPE);
@@ -298,8 +252,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
    * <p>
    * isSendDrive -> start {@link SendDriveActivity}
    * <p>
-   * isSendMaps -> start {@link SendMapsActivity}
-   * <p>
    * isSendSpreadsheets -> start {@link SendSpreadsheetsActivity}
    * <p>
    * else -> start {@link UploadResultActivity}
@@ -313,8 +265,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
       } else {
         next = SendDriveActivity.class;
       }
-    } else if (sendRequest.isSendMaps()) {
-      next = SendMapsActivity.class;
     } else if (sendRequest.isSendSpreadsheets()) {
       next = SendSpreadsheetsActivity.class;
     } else {

@@ -16,7 +16,6 @@
 
 package com.google.android.apps.mytracks.io.drive;
 
-import com.google.android.apps.mytracks.io.maps.SendMapsActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
@@ -59,9 +58,7 @@ public class SendDriveActivity extends AbstractSendActivity {
     if (isCancel) {
       return UploadResultActivity.class;
     } else {
-      if (sendRequest.isSendMaps()) {
-        return SendMapsActivity.class;
-      } else if (sendRequest.isSendSpreadsheets()) {
+      if (sendRequest.isSendSpreadsheets()) {
         return SendSpreadsheetsActivity.class;
       } else {
         return UploadResultActivity.class;

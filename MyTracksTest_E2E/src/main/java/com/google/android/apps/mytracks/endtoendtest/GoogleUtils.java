@@ -16,25 +16,14 @@
 
 package com.google.android.apps.mytracks.endtoendtest;
 
-import com.google.android.apps.mytracks.Constants;
-import com.google.android.apps.mytracks.io.gdata.GDataClientFactory;
-import com.google.android.apps.mytracks.io.gdata.maps.MapFeatureEntry;
-import com.google.android.apps.mytracks.io.gdata.maps.MapsClient;
-import com.google.android.apps.mytracks.io.gdata.maps.MapsConstants;
-import com.google.android.apps.mytracks.io.gdata.maps.MapsGDataConverter;
-import com.google.android.apps.mytracks.io.gdata.maps.MapsMapMetadata;
-import com.google.android.apps.mytracks.io.gdata.maps.XmlMapsGDataParserFactory;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendToGoogleUtils;
 import com.google.android.apps.mytracks.io.spreadsheets.SendSpreadsheetsAsyncTask;
 import com.google.android.apps.mytracks.io.sync.SyncUtils;
 import com.google.android.apps.mytracks.util.SystemUtils;
-import com.google.android.common.gdata.AndroidXmlParserFactory;
 import com.google.android.maps.mytracks.R;
 import com.google.api.client.auth.oauth2.BearerToken;
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
-import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.gdata.client.spreadsheet.SpreadsheetService;
@@ -42,15 +31,11 @@ import com.google.gdata.data.spreadsheet.ListEntry;
 import com.google.gdata.data.spreadsheet.ListFeed;
 import com.google.gdata.data.spreadsheet.WorksheetEntry;
 import com.google.gdata.data.spreadsheet.WorksheetFeed;
-import com.google.wireless.gdata.parser.GDataParser;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.content.Context;
 import android.util.Log;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -100,63 +85,6 @@ public class GoogleUtils {
       }
     } catch (Exception e) {
       Log.e(TAG, "Unable to delete Google Drive test files.", e);
-    }
-  }
-
-  /**
-   * Deletes Google Maps of the first Google account.
-   * 
-   * @param context the context
-   * @param accountName the account name
-   * @param mapTitle the map title
-   * @return true if deletion is success.
-   */
-  public static boolean deleteMaps(Context context, String accountName, String mapTitle) {
-    Account account = getGoogleAccount(context, accountName);
-    if (account == null) {
-      return false;
-    }
-    MapsClient mapsClient = new MapsClient(GDataClientFactory.getGDataClient(context),
-        new XmlMapsGDataParserFactory(new AndroidXmlParserFactory()));
-    ArrayList<MapsMapMetadata> mapMetadata = getMaps(context, account, mapsClient);
-    for (MapsMapMetadata data : mapMetadata) {
-      if (data.getDescription().indexOf(MY_TRACKS_PREFIX) > -1
-          && data.getTitle().equals(mapTitle)) {
-        try {
-          mapsClient.deleteEntry(data.getGDataEditUri(), AccountManager.get(context)
-              .blockingGetAuthToken(account, MapsConstants.SERVICE_NAME, false));
-          return true;
-        } catch (Exception e) {
-          Log.e(TAG, "Unable to delete maps.", e);
-          return false;
-        }
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Deletes all Google Maps of the first Google account
-   * 
-   * @param context the context
-   * @param accountName the account name
-   */
-  public static void deleteAllMaps(Context context, String accountName) {
-    Account account = getGoogleAccount(context, accountName);
-    if (account == null) {
-      Log.e(TAG, "Unable to get account.");
-      return;
-    }
-    MapsClient mapsClient = new MapsClient(GDataClientFactory.getGDataClient(context),
-        new XmlMapsGDataParserFactory(new AndroidXmlParserFactory()));
-    ArrayList<MapsMapMetadata> mapMetadata = getMaps(context, account, mapsClient);
-    for (MapsMapMetadata oneData : mapMetadata) {
-      try {
-        mapsClient.deleteEntry(oneData.getGDataEditUri(), AccountManager.get(context)
-            .blockingGetAuthToken(account, MapsConstants.SERVICE_NAME, false));
-      } catch (Exception e) {
-        Log.e(TAG, "Unable to delete maps.", e);
-      }
     }
   }
 
@@ -301,63 +229,5 @@ public class GoogleUtils {
     }
 
     return true;
-  }
-
-  /**
-   * Gets the google account.
-   * 
-   * @param context the context
-   * @param accountName the account name
-   */
-  private static Account getGoogleAccount(Context context, String accountName) {
-    Account[] accounts = AccountManager.get(context).getAccountsByType(Constants.ACCOUNT_TYPE);
-    for (Account account : accounts) {
-      if (account.name.equals(accountName)) {
-        return account;
-      }
-    }
-    return null;
-  }
-
-  /**
-   * Gets Google Maps.
-   * 
-   * @param context the context
-   * @param account the account
-   * @param mapsClient the map client
-   * @return a list of maps.
-   */
-  private static ArrayList<MapsMapMetadata> getMaps(
-      Context context, Account account, MapsClient mapsClient) {
-    String authToken = null;
-    ArrayList<String> mapIds = new ArrayList<String>();
-    ArrayList<MapsMapMetadata> mapMetadata = new ArrayList<MapsMapMetadata>();
-
-    try {
-      authToken = AccountManager.get(context)
-          .blockingGetAuthToken(account, MapsConstants.SERVICE_NAME, false);
-    } catch (Exception e) {
-      Log.e(TAG, "Unable to get auth token.", e);
-      return mapMetadata;
-    }
-
-    GDataParser gDataParser = null;
-    try {
-      gDataParser = mapsClient.getParserForFeed(
-          MapFeatureEntry.class, MapsClient.getMapsFeed(), authToken);
-      gDataParser.init();
-      while (gDataParser.hasMoreData()) {
-        MapFeatureEntry entry = (MapFeatureEntry) gDataParser.readNextEntry(null);
-        mapIds.add(MapsGDataConverter.getMapidForEntry(entry));
-        mapMetadata.add(MapsGDataConverter.getMapMetadataForEntry(entry));
-      }
-    } catch (Exception e) {
-      Log.e(TAG, "Unable to get maps.", e);
-    } finally {
-      if (gDataParser != null) {
-        gDataParser.close();
-      }
-    }
-    return mapMetadata;
   }
 }
