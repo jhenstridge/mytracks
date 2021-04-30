@@ -38,7 +38,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksApiSample/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksApiSample/build" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.15.8" level="project" />
     <orderEntry type="module" module-name="mytracks.MyTracksLib" />

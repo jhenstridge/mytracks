@@ -38,7 +38,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracks/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracks/build" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/antlib.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-client-1.0.jar" level="project" />

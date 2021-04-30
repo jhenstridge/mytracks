@@ -37,7 +37,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksTest_E2E/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracksTest_E2E/build" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: ./MyTracksTest_E2E/libs/AndroidMockGenerator.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/antlib.jar" level="project" />
