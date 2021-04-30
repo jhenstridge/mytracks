@@ -46,7 +46,6 @@
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-core-1.0.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-spreadsheet-3.0.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-spreadsheet-meta-3.0.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/google-common.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/libGoogleAnalytics.jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-gson:1.20.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.1" level="project" />
