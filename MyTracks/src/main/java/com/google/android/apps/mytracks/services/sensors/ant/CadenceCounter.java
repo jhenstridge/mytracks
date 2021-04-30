@@ -55,7 +55,7 @@ public class CadenceCounter {
   private int eventsPerMinute;
 
   // The history of the previous sensor data, oldest first
-  private LinkedList<CadenceData> history;
+  private final LinkedList<CadenceData> history;
 
   public CadenceCounter() {
     lastCount = -1;

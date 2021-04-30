@@ -42,7 +42,7 @@ public class ChartsExtendedEncoder {
     }
 
     return String.valueOf(CHARTSERVER_EXTENDED_ENCODING.charAt(index1))
-         + String.valueOf(CHARTSERVER_EXTENDED_ENCODING.charAt(index2));
+         + CHARTSERVER_EXTENDED_ENCODING.charAt(index2);
   }
 
   public static String getSeparator() {

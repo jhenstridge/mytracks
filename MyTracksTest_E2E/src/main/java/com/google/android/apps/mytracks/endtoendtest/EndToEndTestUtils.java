@@ -113,7 +113,7 @@ public class EndToEndTestUtils {
   private static boolean isGooglePlayServicesLatest = true;
   private static String language;
   
-  private EndToEndTestUtils() {};
+  private EndToEndTestUtils() {}
 
   /**
    * Checks the language, then sets the fields with right string.
@@ -424,7 +424,7 @@ public class EndToEndTestUtils {
     instrumentation.waitForIdleSync();
     View view = SOLO.getCurrentActivity().findViewById(R.id.track_controller_stop);
     // TODO: understand why view can be null here
-    return view != null ? view.isEnabled() : false;
+    return view != null && view.isEnabled();
   }
 
   /**
@@ -528,7 +528,7 @@ public class EndToEndTestUtils {
   @SuppressLint("NewApi")
   private static boolean setHasActionBar() {
     try {
-      return trackListActivity.getActionBar() == null ? false : true;
+      return trackListActivity.getActionBar() != null;
     } catch (Throwable e) {
       // For in Android which does not has action bar, here will meet a error.
       return false;

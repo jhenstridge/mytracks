@@ -49,7 +49,7 @@ public class ChooseAccountDialogFragment extends AbstractMyTracksDialogFragment 
      * 
      * @param account the account chosen
      */
-    public void onChooseAccountDone(String account);
+    void onChooseAccountDone(String account);
   }
 
   public static final String CHOOSE_ACCOUNT_DIALOG_TAG = "chooseAccount";

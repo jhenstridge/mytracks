@@ -72,7 +72,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
 
   // Modes of operation
   private boolean chartByDistance = true;
-  private boolean[] chartShow = new boolean[] { true, true, true, true, true, true };
+  private final boolean[] chartShow = new boolean[] { true, true, true, true, true, true };
 
   // UI elements
   private ChartView chartView;
@@ -105,13 +105,13 @@ public class ChartFragment extends Fragment implements TrackDataListener {
      * data on every onStart or onResume.
      */
     chartView = new ChartView(getActivity());
-  };
+  }
 
-  @Override
+    @Override
   public View onCreateView(
       LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.chart, container, false);
-    zoomControls = (ZoomControls) view.findViewById(R.id.chart_zoom_controls);
+    zoomControls = view.findViewById(R.id.chart_zoom_controls);
     zoomControls.setOnZoomInClickListener(new View.OnClickListener() {
         @Override
       public void onClick(View v) {
@@ -130,7 +130,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
   @Override
   public void onStart() {
     super.onStart();
-    ViewGroup layout = (ViewGroup) getActivity().findViewById(R.id.chart_view_layout);
+    ViewGroup layout = getActivity().findViewById(R.id.chart_view_layout);
     LayoutParams layoutParams = new LayoutParams(
         LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
     layout.addView(chartView, layoutParams);
@@ -153,7 +153,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
   @Override
   public void onStop() {
     super.onStop();
-    ViewGroup layout = (ViewGroup) getActivity().findViewById(R.id.chart_view_layout);
+    ViewGroup layout = getActivity().findViewById(R.id.chart_view_layout);
     layout.removeView(chartView);
   }
 
@@ -448,7 +448,7 @@ public class ChartFragment extends Fragment implements TrackDataListener {
    * @param data the data point to fill in, can be null
    */
   @VisibleForTesting
-  void fillDataPoint(Location location, double data[]) {
+  void fillDataPoint(Location location, double[] data) {
     double timeOrDistance = Double.NaN;
     double elevation = Double.NaN;
     double speed = Double.NaN;

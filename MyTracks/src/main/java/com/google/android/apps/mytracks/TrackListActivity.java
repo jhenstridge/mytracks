@@ -235,8 +235,8 @@ public class TrackListActivity extends AbstractSendToGoogleActivity
           @Override
         public boolean onClick(int itemId, int[] positions, long[] ids) {
           return handleContextItem(itemId, ids);
-        };
-      };
+        }
+  };
 
   private final OnClickListener recordListener = new OnClickListener() {
     public void onClick(View v) {
@@ -344,7 +344,7 @@ public class TrackListActivity extends AbstractSendToGoogleActivity
       }
     });
 
-    listView = (ListView) findViewById(R.id.track_list);
+    listView = findViewById(R.id.track_list);
     listView.setEmptyView(findViewById(R.id.track_list_empty_view));
     listView.setOnItemClickListener(new OnItemClickListener() {
         @Override
@@ -611,7 +611,7 @@ public class TrackListActivity extends AbstractSendToGoogleActivity
     // Hide trackController when search dialog is shown
     trackController.hide();
     return super.onSearchRequested();
-  };
+  }
 
   @Override
   protected TrackRecordingServiceConnection getTrackRecordingServiceConnection() {

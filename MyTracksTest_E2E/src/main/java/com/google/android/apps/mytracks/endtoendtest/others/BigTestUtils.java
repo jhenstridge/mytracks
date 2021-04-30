@@ -62,7 +62,7 @@ public class BigTestUtils {
     if (MyTracksProcessId == -1) {
       Assert.fail();
     }
-    int pids[] = { MyTracksProcessId };
+    int[] pids = { MyTracksProcessId };
     android.os.Debug.MemoryInfo[] memoryInfoArray = activityManager.getProcessMemoryInfo(pids);
     int memoryUsage = memoryInfoArray[0].getTotalPss();
     return String.format(Locale.US, " MyTracks TotalPss Memory: %d (kB) ", memoryUsage);

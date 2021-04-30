@@ -55,7 +55,7 @@ public class HelpActivity extends AbstractMyTracksActivity implements EulaCaller
     ApiAdapterFactory.getApiAdapter()
         .setTitleAndSubtitle(this, getString(R.string.menu_help), subtitle);
 
-    webView = (WebView) findViewById(R.id.help_webview);
+    webView = findViewById(R.id.help_webview);
     webView.getSettings().setJavaScriptEnabled(true);
     webView.setWebViewClient(new WebViewClient());
 
@@ -69,7 +69,7 @@ public class HelpActivity extends AbstractMyTracksActivity implements EulaCaller
       webView.restoreState(savedInstanceState);
     }
 
-    Button feedback = (Button) findViewById(R.id.help_feedback);
+    Button feedback = findViewById(R.id.help_feedback);
     boolean showFeedback = ApiAdapterFactory.getApiAdapter().isGoogleFeedbackAvailable();
     feedback.setVisibility(showFeedback ? View.VISIBLE : View.GONE);
     if (showFeedback) {

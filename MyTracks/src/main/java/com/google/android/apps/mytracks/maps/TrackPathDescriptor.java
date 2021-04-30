@@ -28,12 +28,12 @@ public interface TrackPathDescriptor {
   /**
    * Gets the maximum speed which is considered slow.
    */
-  public double getSlowSpeed();
+  double getSlowSpeed();
 
   /**
    * Gets the maximum speed which is considered normal.
    */
-  public double getNormalSpeed();
+  double getNormalSpeed();
 
   /**
    * Updates state.
@@ -41,5 +41,5 @@ public interface TrackPathDescriptor {
    * @param tripstatistics the trip statistics
    * @return true if the state is updated.
    */
-  public boolean updateState(TripStatistics tripstatistics);
+  boolean updateState(TripStatistics tripstatistics);
 }

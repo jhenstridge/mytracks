@@ -43,7 +43,7 @@ public class ConfirmSyncDialogFragment extends AbstractMyTracksDialogFragment {
     /**
      * Called when confirm sync is done.
      */
-    public void onConfirmSyncDone(boolean enable);
+    void onConfirmSyncDone(boolean enable);
   }
 
   public static final String CONFIRM_SYNC_DIALOG_TAG = "confirmSyncDialog";

@@ -64,7 +64,7 @@ public class ShareTrackDialogFragment extends AbstractMyTracksDialogFragment {
      * @param emails the emails to share the track with
      * @param account the google drive account
      */
-    public void onShareTrackDone(long trackId, boolean makePublic, String emails, Account account);
+    void onShareTrackDone(long trackId, boolean makePublic, String emails, Account account);
   }
 
   public static final String SHARE_TRACK_DIALOG_TAG = "shareTrackDialog";
@@ -113,11 +113,11 @@ public class ShareTrackDialogFragment extends AbstractMyTracksDialogFragment {
 
     // Get all the views
     View view = fragmentActivity.getLayoutInflater().inflate(R.layout.share_track, null);
-    publicCheckBox = (CheckBox) view.findViewById(R.id.share_track_public);
-    inviteCheckBox = (CheckBox) view.findViewById(R.id.share_track_invite);
-    multiAutoCompleteTextView = (MultiAutoCompleteTextView) view.findViewById(
+    publicCheckBox = view.findViewById(R.id.share_track_public);
+    inviteCheckBox = view.findViewById(R.id.share_track_invite);
+    multiAutoCompleteTextView = view.findViewById(
         R.id.share_track_emails);
-    accountSpinner = (Spinner) view.findViewById(R.id.share_track_account);
+    accountSpinner = view.findViewById(R.id.share_track_account);
     
     // Setup publicCheckBox
     publicCheckBox.setChecked(PreferencesUtils.getBoolean(

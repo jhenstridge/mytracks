@@ -43,5 +43,5 @@ public class Api10Adapter extends Api9Adapter {
       Log.d(TAG, "Unable to create insecure connection", e);
     }
     return bluetoothDevice.createRfcommSocketToServiceRecord(BluetoothConnectionManager.MY_TRACKS_UUID);
-  };
+  }
 }

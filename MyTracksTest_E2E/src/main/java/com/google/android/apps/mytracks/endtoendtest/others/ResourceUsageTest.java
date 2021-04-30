@@ -51,8 +51,8 @@ public class ResourceUsageTest extends ActivityInstrumentationTestCase2<TrackLis
   /**
    * Default duration for each test is half one hour.
    */
-  private int TEST_DURATION_IN_MILLISECONDS = 30 * 60 * 1000;
-  private int INTERVALE_TO_CHECK = 5 * 60 * 1000;
+  private final int TEST_DURATION_IN_MILLISECONDS = 30 * 60 * 1000;
+  private final int INTERVALE_TO_CHECK = 5 * 60 * 1000;
 
   @Override
   protected void setUp() throws Exception {

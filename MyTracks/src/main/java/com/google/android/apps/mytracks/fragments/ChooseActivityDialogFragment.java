@@ -58,7 +58,7 @@ public class ChooseActivityDialogFragment extends AbstractMyTracksDialogFragment
     /**
      * Called when choose activity is done.
      */
-    public void onChooseActivityDone(String packageName, String className);
+    void onChooseActivityDone(String packageName, String className);
   }
   
   private static class ViewHolder {
@@ -99,9 +99,9 @@ public class ChooseActivityDialogFragment extends AbstractMyTracksDialogFragment
           view = getActivity().getLayoutInflater()
               .inflate(R.layout.choose_activity_list_item, parent, false);
           viewHolder = new ViewHolder();
-          viewHolder.text1 = (TextView) view.findViewById(R.id.choose_activity_list_item_text1);
-          viewHolder.text2 = (TextView) view.findViewById(R.id.choose_activity_list_item_text2);
-          viewHolder.icon = (ImageView) view.findViewById(R.id.choose_activity_list_item_icon);
+          viewHolder.text1 = view.findViewById(R.id.choose_activity_list_item_text1);
+          viewHolder.text2 = view.findViewById(R.id.choose_activity_list_item_text2);
+          viewHolder.icon = view.findViewById(R.id.choose_activity_list_item_icon);
           view.setTag(viewHolder);
         } else {
           view = convertView;
@@ -201,10 +201,10 @@ public class ChooseActivityDialogFragment extends AbstractMyTracksDialogFragment
    * @author Jimmy Shih
    */
   private final class DisplayInfo {
-    private ResolveInfo resolveInfo;
-    private CharSequence primaryLabel;
-    private CharSequence secondaryLabel;
-    private Drawable icon;
+    private final ResolveInfo resolveInfo;
+    private final CharSequence primaryLabel;
+    private final CharSequence secondaryLabel;
+    private final Drawable icon;
 
     public DisplayInfo(ResolveInfo resolveInfo, CharSequence primaryLabel,
         CharSequence secondaryLabel, Drawable icon) {

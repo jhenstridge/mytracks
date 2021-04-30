@@ -548,7 +548,7 @@ public class SyncUtils {
       MyTracksProviderUtils myTracksProviderUtils, Track track, File driveFile) {
     track.setDriveId(driveFile != null ? driveFile.getId() : "");
     track.setModifiedTime(driveFile != null ? driveFile.getModifiedDate().getValue() : -1L);
-    track.setSharedWithMe(driveFile != null ? driveFile.getSharedWithMeDate() != null : false);
+    track.setSharedWithMe(driveFile != null && driveFile.getSharedWithMeDate() != null);
     track.setSharedOwner(driveFile != null && driveFile.getSharedWithMeDate() != null
         && driveFile.getOwnerNames().size() > 0 ? driveFile.getOwnerNames().get(0)
         : "");

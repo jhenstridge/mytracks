@@ -125,7 +125,7 @@ public class SearchListActivity extends AbstractSendToGoogleActivity implements 
       };
 
   // Callback when an item is selected in the contextual action mode
-  private ContextualActionModeCallback
+  private final ContextualActionModeCallback
       contextualActionModeCallback = new ContextualActionModeCallback() {
           @Override
         public boolean onClick(int itemId, int[] positions, long[] ids) {
@@ -195,7 +195,7 @@ public class SearchListActivity extends AbstractSendToGoogleActivity implements 
     searchEngine = new SearchEngine(myTracksProviderUtils);
     searchRecentSuggestions = SearchEngineProvider.newHelper(this);
 
-    listView = (ListView) findViewById(R.id.search_list);
+    listView = findViewById(R.id.search_list);
     listView.setEmptyView(findViewById(R.id.search_list_empty));
     listView.setOnItemClickListener(new OnItemClickListener() {
         @Override

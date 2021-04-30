@@ -132,9 +132,9 @@ public class MapOverlay {
     public LatLng getLatLng() {
       return latLng;
     }
-  };
+  }
 
-  public MapOverlay(Context context) {
+    public MapOverlay(Context context) {
     this.context = context;
     this.waypoints = new ArrayList<Waypoint>();
     this.locations = new ArrayList<CachedLocation>(INITIAL_LOCATIONS_SIZE);

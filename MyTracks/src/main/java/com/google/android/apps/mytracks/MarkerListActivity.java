@@ -66,7 +66,7 @@ public class MarkerListActivity extends AbstractMyTracksActivity implements Dele
       WaypointsColumns.TYPE, WaypointsColumns.TIME, WaypointsColumns.PHOTOURL };
 
   // Callback when an item is selected in the contextual action mode
-  private ContextualActionModeCallback
+  private final ContextualActionModeCallback
       contextualActionModeCallback = new ContextualActionModeCallback() {
           @Override
         public void onPrepare(Menu menu, int[] positions, long[] ids, boolean showSelectAll) {
@@ -158,7 +158,7 @@ public class MarkerListActivity extends AbstractMyTracksActivity implements Dele
     
     setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
-    listView = (ListView) findViewById(R.id.marker_list);
+    listView = findViewById(R.id.marker_list);
     listView.setEmptyView(findViewById(R.id.marker_list_empty));
     listView.setOnItemClickListener(new OnItemClickListener() {
         @Override

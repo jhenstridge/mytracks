@@ -67,7 +67,7 @@ public class AntSensorManager extends SensorManager {
   private static final byte ANT_NETWORK = (byte) 0x01;
 
   private final Context context;
-  private final ChannelConfiguration channelConfig[];
+  private final ChannelConfiguration[] channelConfig;
   private final IntentFilter statusIntentFilter;
   private final AntInterface antInterface;
 
@@ -76,11 +76,11 @@ public class AntSensorManager extends SensorManager {
 
   private SensorDataSet sensorDataSet = null;
   private long lastSensorDataSetTime = 0;
-  private AntSensorValue antSensorValue = new AntSensorValue();
+  private final AntSensorValue antSensorValue = new AntSensorValue();
 
   private boolean requestedReset = false;
 
-  private AntInterface.ServiceListener serviceListener = new AntInterface.ServiceListener() {
+  private final AntInterface.ServiceListener serviceListener = new AntInterface.ServiceListener() {
       @Override
     public void onServiceConnected() {
       setSensorState(Sensor.SensorState.CONNECTING);

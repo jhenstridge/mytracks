@@ -36,7 +36,7 @@ import java.io.IOException;
 public class CheckPermissionAsyncTask extends AsyncTask<Void, Void, Boolean> {
 
   public interface CheckPermissionCaller {
-    public void onCheckPermissionDone(String scope, boolean success, Intent userRecoverableIntent);
+    void onCheckPermissionDone(String scope, boolean success, Intent userRecoverableIntent);
   }
 
   private static final String TAG = CheckPermissionAsyncTask.class.getSimpleName();

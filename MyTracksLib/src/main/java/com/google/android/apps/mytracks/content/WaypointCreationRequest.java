@@ -27,14 +27,14 @@ import android.os.Parcelable;
  */
 public class WaypointCreationRequest implements Parcelable {
 
-  private WaypointType type;
+  private final WaypointType type;
   // true if this marker contains the track statistics
-  private boolean isTrackStatistics;
-  private String name;
-  private String category;
-  private String description;
-  private String iconUrl;
-  private String photoUrl;
+  private final boolean isTrackStatistics;
+  private final String name;
+  private final String category;
+  private final String description;
+  private final String iconUrl;
+  private final String photoUrl;
 
   public final static WaypointCreationRequest DEFAULT_WAYPOINT = new WaypointCreationRequest(
       WaypointType.WAYPOINT, false);

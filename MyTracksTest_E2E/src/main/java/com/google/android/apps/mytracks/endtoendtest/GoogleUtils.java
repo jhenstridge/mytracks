@@ -80,7 +80,7 @@ public class GoogleUtils {
       List<File> files = list.execute().getItems();
       Iterator<File> iterator = files.iterator();
       while (iterator.hasNext()) {
-        File file = (File) iterator.next();
+        File file = iterator.next();
         drive.files().delete(file.getId()).execute();
       }
     } catch (Exception e) {
@@ -135,7 +135,7 @@ public class GoogleUtils {
       List<File> files = list.execute().getItems();
       Iterator<File> iterator = files.iterator();
       while (iterator.hasNext()) {
-        File file = (File) iterator.next();
+        File file = iterator.next();
         drive.files().delete(file.getId()).execute();
       }
       return true;
@@ -177,14 +177,14 @@ public class GoogleUtils {
           WorksheetFeed.class);
       Iterator<WorksheetEntry> worksheetEntryIterator = worksheetFeed.getEntries().iterator();
       while (worksheetEntryIterator.hasNext()) {
-        WorksheetEntry worksheetEntry = (WorksheetEntry) worksheetEntryIterator.next();
+        WorksheetEntry worksheetEntry = worksheetEntryIterator.next();
         String worksheetTitle = worksheetEntry.getTitle().getPlainText();
         if (worksheetTitle.equals(SPREADSHEETS_WORKSHEET_NAME)) {
           URL url = worksheetEntry.getListFeedUrl();
           Iterator<ListEntry> listEntryIterator = spreadsheetService.getFeed(url, ListFeed.class)
               .getEntries().iterator();
           while (listEntryIterator.hasNext()) {
-            ListEntry listEntry = (ListEntry) listEntryIterator.next();
+            ListEntry listEntry = listEntryIterator.next();
             String name = listEntry.getCustomElements().getValue(SPREADSHEETS_TRANCK_NAME_COLUMN);
             if (name.equals(trackName)) {
               listEntry.delete();
@@ -222,12 +222,8 @@ public class GoogleUtils {
     }
 
     // Check the no account permission dialog
-    if (EndToEndTestUtils.SOLO.waitForText(
-        EndToEndTestUtils.trackListActivity.getString(R.string.send_google_no_account_permission), 1,
-        EndToEndTestUtils.SHORT_WAIT_TIME)) {
-      return false;
-    }
-
-    return true;
+    return !EndToEndTestUtils.SOLO.waitForText(
+            EndToEndTestUtils.trackListActivity.getString(R.string.send_google_no_account_permission), 1,
+            EndToEndTestUtils.SHORT_WAIT_TIME);
   }
 }

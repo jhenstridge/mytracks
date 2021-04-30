@@ -37,7 +37,7 @@ public interface TrackPath {
    * @param tripStatistics the trip statistics
    * @return true if the state is updated.
    */
-  public boolean updateState(TripStatistics tripStatistics);
+  boolean updateState(TripStatistics tripStatistics);
 
   /**
    * Updates the path.
@@ -45,6 +45,6 @@ public interface TrackPath {
    * @param startIndex the start index
    * @param points the points
    */
-  public void updatePath(GoogleMap googleMap, ArrayList<Polyline> paths, int startIndex,
-      List<CachedLocation> points);
+  void updatePath(GoogleMap googleMap, ArrayList<Polyline> paths, int startIndex,
+                  List<CachedLocation> points);
 }

@@ -125,7 +125,7 @@ public class MyTracksMapFragment extends SupportMapFragment implements TrackData
   private Track currentTrack;
 
   // Current paths
-  private ArrayList<Polyline> paths = new ArrayList<Polyline>();
+  private final ArrayList<Polyline> paths = new ArrayList<Polyline>();
   boolean reloadPaths = true;
 
   // UI elements
@@ -147,7 +147,7 @@ public class MyTracksMapFragment extends SupportMapFragment implements TrackData
       LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     mapView = super.onCreateView(inflater, container, savedInstanceState);
     View layout = inflater.inflate(R.layout.map, container, false);
-    RelativeLayout mapContainer = (RelativeLayout) layout.findViewById(R.id.map_container);
+    RelativeLayout mapContainer = layout.findViewById(R.id.map_container);
     mapContainer.addView(mapView, 0);
 
     /*
@@ -159,7 +159,7 @@ public class MyTracksMapFragment extends SupportMapFragment implements TrackData
     mapContainer.addView(frameLayout,
         new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
-    myLocationImageButton = (ImageButton) layout.findViewById(R.id.map_my_location);
+    myLocationImageButton = layout.findViewById(R.id.map_my_location);
     myLocationImageButton.setOnClickListener(new View.OnClickListener() {
         @Override
       public void onClick(View v) {
@@ -203,7 +203,7 @@ public class MyTracksMapFragment extends SupportMapFragment implements TrackData
         }
       }
     });
-    messageTextView = (TextView) layout.findViewById(R.id.map_message);
+    messageTextView = layout.findViewById(R.id.map_message);
     return layout;
   }
 
@@ -214,7 +214,7 @@ public class MyTracksMapFragment extends SupportMapFragment implements TrackData
       keepCurrentLocationVisible = savedInstanceState.getBoolean(
           KEEP_CURRENT_LOCATION_VISIBLE_KEY, false);
       if (keepCurrentLocationVisible) {
-        Location location = (Location) savedInstanceState.getParcelable(CURRENT_LOCATION_KEY);
+        Location location = savedInstanceState.getParcelable(CURRENT_LOCATION_KEY);
         if (location != null) {
           setCurrentLocation(location);
         }
@@ -561,7 +561,7 @@ public class MyTracksMapFragment extends SupportMapFragment implements TrackData
               : CameraUpdateFactory.newLatLng(latLng);
           googleMap.animateCamera(cameraUpdate);
         }
-      };
+      }
     });
   }
 

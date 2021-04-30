@@ -14,7 +14,7 @@ import android.content.Context;
  * @author Rodrigo Damazio
  */
 public class TestingProviderUtilsFactory extends Factory {
-  private MyTracksProviderUtils instance;
+  private final MyTracksProviderUtils instance;
 
   public TestingProviderUtilsFactory(MyTracksProviderUtils instance) {
     this.instance = instance;

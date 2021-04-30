@@ -39,7 +39,7 @@ public class PreferenceBackupHelperTest extends AndroidTestCase {
    * Mock shared preferences editor which does not persist state.
    */
   private class MockPreferenceEditor implements SharedPreferences.Editor {
-    private Map<String, Object> newPreferences = new HashMap<String, Object>(preferenceValues);
+    private final Map<String, Object> newPreferences = new HashMap<String, Object>(preferenceValues);
 
     @Override
     public Editor clear() {

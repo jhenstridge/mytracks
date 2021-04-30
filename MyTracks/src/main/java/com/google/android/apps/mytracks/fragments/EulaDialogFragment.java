@@ -47,7 +47,7 @@ public class EulaDialogFragment extends AbstractMyTracksDialogFragment {
     /**
      * Called when eula is done.
      */
-    public void onEulaDone();
+    void onEulaDone();
   }
 
   public static final String EULA_DIALOG_TAG = "eulaDialog";
@@ -103,11 +103,8 @@ public class EulaDialogFragment extends AbstractMyTracksDialogFragment {
       }).setOnKeyListener(new DialogInterface.OnKeyListener() {
           @Override
         public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-          if (keyCode == KeyEvent.KEYCODE_SEARCH) {
-            return true;
+              return keyCode == KeyEvent.KEYCODE_SEARCH;
           }
-          return false;
-        }
       }).setPositiveButton(R.string.eula_accept, new DialogInterface.OnClickListener() {
           @Override
         public void onClick(DialogInterface dialog, int which) {
@@ -122,7 +119,7 @@ public class EulaDialogFragment extends AbstractMyTracksDialogFragment {
   @Override
   public void onStart() {
     super.onStart();   
-    TextView textView = (TextView) getDialog().findViewById(android.R.id.message);
+    TextView textView = getDialog().findViewById(android.R.id.message);
     textView.setMovementMethod(LinkMovementMethod.getInstance());
     textView.setTextAppearance(getActivity(), R.style.TextSmall);
   }

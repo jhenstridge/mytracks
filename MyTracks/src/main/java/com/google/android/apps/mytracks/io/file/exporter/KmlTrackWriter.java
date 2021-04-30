@@ -76,9 +76,9 @@ public class KmlTrackWriter implements TrackWriter {
   private final MyTracksProviderUtils myTracksProviderUtils;
 
   private PrintWriter printWriter;
-  private ArrayList<Integer> powerList = new ArrayList<Integer>();
-  private ArrayList<Integer> cadenceList = new ArrayList<Integer>();
-  private ArrayList<Integer> heartRateList = new ArrayList<Integer>();
+  private final ArrayList<Integer> powerList = new ArrayList<Integer>();
+  private final ArrayList<Integer> cadenceList = new ArrayList<Integer>();
+  private final ArrayList<Integer> heartRateList = new ArrayList<Integer>();
   private boolean hasPower;
   private boolean hasCadence;
   private boolean hasHeartRate;

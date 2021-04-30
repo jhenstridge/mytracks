@@ -197,8 +197,8 @@ public class SensorTest extends ActivityInstrumentationTestCase2<TrackListActivi
    * @param viewID the id to check which is not equal with None
    */
   private void checkANTSensorsStatus(int viewID) {
-    TextView sensorValueText = ((TextView) EndToEndTestUtils.SOLO.getCurrentActivity()
-        .findViewById(viewID));
+    TextView sensorValueText = EndToEndTestUtils.SOLO.getCurrentActivity()
+        .findViewById(viewID);
     assertNotNull(sensorValueText);
     String realValue = sensorValueText.getText().toString();
     String noneValue = trackListActivity.getString(R.string.value_none);

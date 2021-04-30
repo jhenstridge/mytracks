@@ -109,10 +109,10 @@ public class TrackEditActivity extends AbstractMyTracksActivity implements Choos
       return;
     }
 
-    name = (EditText) findViewById(R.id.track_edit_name);
+    name = findViewById(R.id.track_edit_name);
     name.setText(track.getName());
 
-    activityType = (AutoCompleteTextView) findViewById(R.id.track_edit_activity_type);
+    activityType = findViewById(R.id.track_edit_activity_type);
     activityType.setText(track.getCategory());
 
     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -143,7 +143,7 @@ public class TrackEditActivity extends AbstractMyTracksActivity implements Choos
       iconValue = track.getIcon();
     }
 
-    activityTypeIcon = (Spinner) findViewById(R.id.track_edit_activity_type_icon);
+    activityTypeIcon = findViewById(R.id.track_edit_activity_type_icon);
     activityTypeIcon.setAdapter(TrackIconUtils.getIconSpinnerAdapter(this, iconValue));
     activityTypeIcon.setOnTouchListener(new View.OnTouchListener() {
         @Override
@@ -168,10 +168,10 @@ public class TrackEditActivity extends AbstractMyTracksActivity implements Choos
       }
     });
 
-    description = (EditText) findViewById(R.id.track_edit_description);
+    description = findViewById(R.id.track_edit_description);
     description.setText(track.getDescription());
 
-    Button save = (Button) findViewById(R.id.track_edit_save);
+    Button save = findViewById(R.id.track_edit_save);
     save.setOnClickListener(new View.OnClickListener() {
         @Override
       public void onClick(View v) {
@@ -194,7 +194,7 @@ public class TrackEditActivity extends AbstractMyTracksActivity implements Choos
       }
     });
 
-    Button cancel = (Button) findViewById(R.id.track_edit_cancel);
+    Button cancel = findViewById(R.id.track_edit_cancel);
     if (getIntent().getBooleanExtra(EXTRA_NEW_TRACK, false)) {
       setTitle(R.string.track_edit_new_track_title);
       cancel.setVisibility(View.GONE);

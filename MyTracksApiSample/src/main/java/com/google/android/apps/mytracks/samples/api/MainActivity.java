@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
   private Intent intent;
 
   // connection to the MyTracks service
-  private ServiceConnection serviceConnection = new ServiceConnection() {
+  private final ServiceConnection serviceConnection = new ServiceConnection() {
     @Override
     public void onServiceConnected(ComponentName className, IBinder service) {
       myTracksService = ITrackRecordingService.Stub.asInterface(service);
@@ -81,9 +81,9 @@ public class MainActivity extends Activity {
 
     // for the MyTracks content provider
     myTracksProviderUtils = MyTracksProviderUtils.Factory.get(this);
-    outputTextView = (TextView) findViewById(R.id.output);
+    outputTextView = findViewById(R.id.output);
 
-    Button addWaypointsButton = (Button) findViewById(R.id.add_waypoints_button);
+    Button addWaypointsButton = findViewById(R.id.add_waypoints_button);
     addWaypointsButton.setOnClickListener(new View.OnClickListener() {
 	@Override
         public void onClick(View v) {
@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
         getString(R.string.mytracks_service_package), getString(R.string.mytracks_service_class));
     intent.setComponent(componentName);
 
-    Button startRecordingButton = (Button) findViewById(R.id.start_recording_button);
+    Button startRecordingButton = findViewById(R.id.start_recording_button);
     startRecordingButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -119,7 +119,7 @@ public class MainActivity extends Activity {
       }
     });
 
-    Button stopRecordingButton = (Button) findViewById(R.id.stop_recording_button);
+    Button stopRecordingButton = findViewById(R.id.stop_recording_button);
     stopRecordingButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

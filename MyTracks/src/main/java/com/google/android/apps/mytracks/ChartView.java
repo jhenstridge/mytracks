@@ -570,7 +570,7 @@ public class ChartView extends View {
         canvas.drawLine(
             x, topBorder + spacer + markerHeight / 2, x, topBorder + effectiveHeight, markerPaint);
         canvas.translate(
-            x - (float) (markerWidth * MapOverlay.WAYPOINT_X_ANCHOR), topBorder + spacer);
+            x - (markerWidth * MapOverlay.WAYPOINT_X_ANCHOR), topBorder + spacer);
         if (waypoints.get(i).getType() == WaypointType.STATISTICS) {
           statisticsMarker.draw(canvas);
         } else {
@@ -658,7 +658,7 @@ public class ChartView extends View {
     canvas.drawLine(x, y, x + effectiveWidth, y, axisPaint);
     String label = getXAxisLabel();
     Rect rect = getRect(axisPaint, label);
-    int yOffset = (int) rect.height() / 2;
+    int yOffset = rect.height() / 2;
     canvas.drawText(label, x + effectiveWidth + spacer, y + yOffset, axisPaint);
 
     double interval = getXAxisInterval();
@@ -784,7 +784,7 @@ public class ChartView extends View {
     String marker = chartValueSeries.formatMarker(yValue);
     Paint paint = chartValueSeries.getMarkerPaint();
     Rect rect = getRect(paint, marker);
-    int yPosition = getY(chartValueSeries, yValue) + (int) (rect.height() / 2);
+    int yPosition = getY(chartValueSeries, yValue) + (rect.height() / 2);
     canvas.drawText(marker, xPosition, yPosition, paint);
     return paint.measureText(marker);
   }
@@ -917,7 +917,7 @@ public class ChartView extends View {
     Rect xAxisLabelRect = getRect(axisPaint, getXAxisLabel());
     // border + x axis marker + spacer + .5 x axis label
     bottomBorder = (int) (density * BORDER + getRect(xAxisMarkerPaint, "1").height() + spacer
-        + (int) (xAxisLabelRect.height() / 2));
+        + (xAxisLabelRect.height() / 2));
     rightBorder = (int) (density * BORDER + xAxisLabelRect.width() + spacer);
     updateEffectiveDimensions();
   }

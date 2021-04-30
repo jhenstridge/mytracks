@@ -51,9 +51,9 @@ public class MyTracksProviderUtilsImplTest extends AndroidTestCase {
   private static final String MOCK_DESC = "Mock Next Waypoint Desc!";
   private static final String TEST_DESC = "Test Desc!";
   private static final String TEST_DESC_NEW = "Test Desc new!";
-  private double INITIAL_LATITUDE = 37.0;
-  private double INITIAL_LONGITUDE = -57.0;
-  private double ALTITUDE_INTERVAL = 2.5;
+  private final double INITIAL_LATITUDE = 37.0;
+  private final double INITIAL_LONGITUDE = -57.0;
+  private final double ALTITUDE_INTERVAL = 2.5;
 
   @Override
   protected void setUp() throws Exception {
@@ -210,7 +210,7 @@ public class MyTracksProviderUtilsImplTest extends AndroidTestCase {
     // Id
     AndroidMock.expect(cursorMock.getLong(columnIndex++)).andReturn(trackId);
     // Name
-    String name = NAME_PREFIX + Long.toString(trackId);
+    String name = NAME_PREFIX + trackId;
     AndroidMock.expect(cursorMock.getString(columnIndex++)).andReturn(name);
     AndroidMock.replay(cursorMock);
     Track track = providerUtils.createTrack(cursorMock);
@@ -416,7 +416,7 @@ public class MyTracksProviderUtilsImplTest extends AndroidTestCase {
     // Id
     AndroidMock.expect(cursorMock.getLong(columnIndex++)).andReturn(id);
     // Name
-    String name = NAME_PREFIX + Long.toString(id);
+    String name = NAME_PREFIX + id;
     AndroidMock.expect(cursorMock.getString(columnIndex++)).andReturn(name);
     // trackIdIndex
     long trackId = 11L;

@@ -32,6 +32,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.http.Header;
@@ -442,12 +443,7 @@ public class AndroidGDataClient implements GDataClient {
     byte[] entryBytes = baos.toByteArray();
 
     if (entryBytes != null && Log.isLoggable(TAG, Log.DEBUG)) {
-      try {
-        Log.d(TAG, "Serialized entry: " + new String(entryBytes, "UTF-8"));
-      } catch (UnsupportedEncodingException uee) {
-        // should not happen
-        throw new IllegalStateException("UTF-8 should be supported!", uee);
-      }
+        Log.d(TAG, "Serialized entry: " + new String(entryBytes, StandardCharsets.UTF_8));
     }
 
     AbstractHttpEntity entity = new ByteArrayEntity(entryBytes);

@@ -221,8 +221,7 @@ public class TrackDetailActivity extends AbstractSendToGoogleActivity
     hasCamera = getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     photoUri = savedInstanceState != null ? (Uri) savedInstanceState.getParcelable(PHOTO_URI_KEY)
         : null;
-    hasPhoto = savedInstanceState != null ? savedInstanceState.getBoolean(HAS_PHOTO_KEY, false)
-        : false;
+    hasPhoto = savedInstanceState != null && savedInstanceState.getBoolean(HAS_PHOTO_KEY, false);
        
     myTracksProviderUtils = MyTracksProviderUtils.Factory.get(this);
     handleIntent(getIntent());
@@ -233,10 +232,10 @@ public class TrackDetailActivity extends AbstractSendToGoogleActivity
         this, bindChangedCallback);
     trackDataHub = TrackDataHub.newInstance(this);
 
-    tabHost = (TabHost) findViewById(android.R.id.tabhost);
+    tabHost = findViewById(android.R.id.tabhost);
     tabHost.setup();
 
-    viewPager = (ViewPager) findViewById(R.id.pager);
+    viewPager = findViewById(R.id.pager);
 
     tabsAdapter = new TabsAdapter(this, tabHost, viewPager);
 
@@ -360,7 +359,7 @@ public class TrackDetailActivity extends AbstractSendToGoogleActivity
     getMenuInflater().inflate(R.menu.track_detail, menu);
 
     Track track = myTracksProviderUtils.getTrack(trackId);
-    boolean isSharedWithMe = track != null ? track.isSharedWithMe() : true;
+    boolean isSharedWithMe = track == null || track.isSharedWithMe();
 
     menu.findItem(R.id.track_detail_edit).setVisible(!isSharedWithMe);  
     menu.findItem(R.id.track_detail_help_feedback).setTitle(
@@ -442,7 +441,7 @@ public class TrackDetailActivity extends AbstractSendToGoogleActivity
         return true;
       case R.id.track_detail_export:
         Track track = myTracksProviderUtils.getTrack(trackId);
-        boolean hideDrive = track != null ? track.isSharedWithMe() : true;
+        boolean hideDrive = track == null || track.isSharedWithMe();
         ExportDialogFragment.newInstance(hideDrive)
             .show(getSupportFragmentManager(), ExportDialogFragment.EXPORT_DIALOG_TAG);
         return true;

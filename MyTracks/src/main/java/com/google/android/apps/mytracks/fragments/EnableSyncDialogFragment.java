@@ -41,7 +41,7 @@ public class EnableSyncDialogFragment extends AbstractMyTracksDialogFragment {
     /**
      * Called when enable sync is done.
      */
-    public void onEnableSyncDone(boolean enable);
+    void onEnableSyncDone(boolean enable);
   }
 
   public static final String ENABLE_SYNC_DIALOG_TAG = "enableSyncDialog";

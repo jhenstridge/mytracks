@@ -39,7 +39,7 @@ public class DescriptionGeneratorImpl implements DescriptionGenerator {
   private static final String TEXT_LINE_BREAK = "\n";
   private static final String TEXT_PARAGRAPH_SEPARATOR = "\n\n";
 
-  private Context context;
+  private final Context context;
 
   public DescriptionGeneratorImpl(Context context) {
     this.context = context;

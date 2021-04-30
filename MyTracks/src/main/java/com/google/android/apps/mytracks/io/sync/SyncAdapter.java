@@ -260,7 +260,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     String driveDeletedList = PreferencesUtils.getString(
         context, R.string.drive_deleted_list_key, PreferencesUtils.DRIVE_DELETED_LIST_DEFAULT);
     if (!PreferencesUtils.DRIVE_DELETED_LIST_DEFAULT.equals(driveDeletedList)) {
-      String deletedIds[] = TextUtils.split(driveDeletedList, ";");
+      String[] deletedIds = TextUtils.split(driveDeletedList, ";");
       for (String driveId : deletedIds) {
         deleteDriveFile(driveId, true);
       }
@@ -272,7 +272,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     String driveEditedList = PreferencesUtils.getString(
         context, R.string.drive_edited_list_key, PreferencesUtils.DRIVE_EDITED_LIST_DEFAULT);
     if (!PreferencesUtils.DRIVE_EDITED_LIST_DEFAULT.equals(driveEditedList)) {
-      String editedIds[] = TextUtils.split(driveEditedList, ";");
+      String[] editedIds = TextUtils.split(driveEditedList, ";");
       for (String id : editedIds) {
         Track track = myTracksProviderUtils.getTrack(Long.valueOf(id));
         if (track == null) {

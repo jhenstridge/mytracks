@@ -50,7 +50,7 @@ public class PlayMultipleDialogFragment extends AbstractMyTracksDialogFragment {
     /**
      * Called when play multiple is done.
      */
-    public void onPlayMultipleDone(long[] trackIds);
+    void onPlayMultipleDone(long[] trackIds);
   }
 
   private static final String KEY_TRACK_ID = "trackId";

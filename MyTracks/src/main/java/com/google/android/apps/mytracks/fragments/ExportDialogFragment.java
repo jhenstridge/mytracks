@@ -77,8 +77,8 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
      * @param trackFileFormat the track file format
      * @param account the account
      */
-    public void onExportDone(
-        ExportType exportType, TrackFileFormat trackFileFormat, Account account);
+    void onExportDone(
+            ExportType exportType, TrackFileFormat trackFileFormat, Account account);
   }
 
   public static final String EXPORT_DIALOG_TAG = "export";
@@ -121,10 +121,10 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
 
     // Get views
     View view = fragmentActivity.getLayoutInflater().inflate(R.layout.export, null);
-    exportTypeOptions = (Spinner) view.findViewById(R.id.export_type_options);
-    exportExternalStorageOptions = (RadioGroup) view.findViewById(
+    exportTypeOptions = view.findViewById(R.id.export_type_options);
+    exportExternalStorageOptions = view.findViewById(
         R.id.export_external_storage_options);
-    accountSpinner = (Spinner) view.findViewById(R.id.export_account);
+    accountSpinner = view.findViewById(R.id.export_account);
     
     // Setup exportTypeOptions
     setupExportTypeOptions(fragmentActivity);

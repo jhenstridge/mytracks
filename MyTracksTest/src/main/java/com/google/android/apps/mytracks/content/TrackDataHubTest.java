@@ -67,7 +67,7 @@ public class TrackDataHubTest extends AndroidTestCase {
   private TrackDataHub trackDataHub;
   private TrackDataListener trackDataListener1;
   private TrackDataListener trackDataListener2;
-  private Capture<OnSharedPreferenceChangeListener> preferenceChangeListenerCapture = new Capture<
+  private final Capture<OnSharedPreferenceChangeListener> preferenceChangeListenerCapture = new Capture<
       SharedPreferences.OnSharedPreferenceChangeListener>();
 
   @UsesMocks({ MyTracksProviderUtils.class, DataSource.class, TrackDataListener.class })

@@ -56,7 +56,7 @@ public class TcxTrackWriter implements TrackWriter {
 
     private final String name;
 
-    private SportType(String name) {
+    SportType(String name) {
       this.name = name;
     }
 
@@ -69,7 +69,7 @@ public class TcxTrackWriter implements TrackWriter {
   }
 
   // My Tracks categories that are considered as TCX biking sport type.
-  private static final int TCX_SPORT_BIKING_IDS[] = {
+  private static final int[] TCX_SPORT_BIKING_IDS = {
       R.string.activity_type_cycling,
       R.string.activity_type_dirt_bike,
       R.string.activity_type_mountain_biking,
@@ -77,7 +77,7 @@ public class TcxTrackWriter implements TrackWriter {
       R.string.activity_type_track_cycling };
 
   // My Tracks categories that are considered as TCX running sport type.
-  private static final int TCX_SPORT_RUNNING_IDS[] = {
+  private static final int[] TCX_SPORT_RUNNING_IDS = {
       R.string.activity_type_running,
       R.string.activity_type_speed_walking,
       R.string.activity_type_street_running,

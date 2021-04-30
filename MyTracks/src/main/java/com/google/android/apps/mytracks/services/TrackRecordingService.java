@@ -238,7 +238,7 @@ public class TrackRecordingService extends Service {
         }
       };
 
-  private LocationListener locationListener = new LocationListener() {
+  private final LocationListener locationListener = new LocationListener() {
       @Override
     public void onLocationChanged(final Location location) {
       if (myTracksLocationManager == null || executorService == null

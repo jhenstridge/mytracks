@@ -29,7 +29,7 @@ public class BikeCadenceChannelConfiguration extends ChannelConfiguration {
   private static final byte DEVICE_TYPE = 0x7A;
   private static final short MESSAGE_PERIOD = 8102;
 
-  private CadenceCounter cadenceCounter = new CadenceCounter();
+  private final CadenceCounter cadenceCounter = new CadenceCounter();
 
   @Override
   public int getDeviceIdKey() {
