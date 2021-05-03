@@ -32,7 +32,6 @@ public class SendRequest implements Parcelable {
 
   private long trackId = -1L;
   private boolean sendDrive = false;
-  private boolean sendSpreadsheets = false;
 
   private boolean driveSync = false; // to enable Drive sync 
   private boolean driveSharePublic = false; // for driveShare, share as public
@@ -41,7 +40,6 @@ public class SendRequest implements Parcelable {
   private Account account = null;
 
   private boolean driveSuccess = false;
-  private boolean spreadsheetsSuccess = false;
   private String shareUrl = null;
 
   /**
@@ -63,14 +61,6 @@ public class SendRequest implements Parcelable {
 
   public void setSendDrive(boolean sendDrive) {
     this.sendDrive = sendDrive;
-  }
-
-  public boolean isSendSpreadsheets() {
-    return sendSpreadsheets;
-  }
-
-  public void setSendSpreadsheets(boolean sendSpreadsheets) {
-    this.sendSpreadsheets = sendSpreadsheets;
   }
 
   public boolean isDriveSync() {
@@ -113,14 +103,6 @@ public class SendRequest implements Parcelable {
     this.driveSuccess = driveSuccess;
   }
 
-  public boolean isSpreadsheetsSuccess() {
-    return spreadsheetsSuccess;
-  }
-
-  public void setSpreadsheetsSuccess(boolean spreadsheetsSuccess) {
-    this.spreadsheetsSuccess = spreadsheetsSuccess;
-  }
-
   public String getShareUrl() {
     return shareUrl;
   }
@@ -132,13 +114,11 @@ public class SendRequest implements Parcelable {
   private SendRequest(Parcel in) {
     trackId = in.readLong();
     sendDrive = in.readByte() == 1;
-    sendSpreadsheets = in.readByte() == 1;
     driveSync = in.readByte() == 1;
     driveSharePublic = in.readByte() == 1;
     driveShareEmails = in.readString();
     account = in.readParcelable(null);
     driveSuccess = in.readByte() == 1;
-    spreadsheetsSuccess = in.readByte() == 1;
     shareUrl = in.readString();
   }
 
@@ -151,13 +131,11 @@ public class SendRequest implements Parcelable {
   public void writeToParcel(Parcel out, int flags) {
     out.writeLong(trackId);
     out.writeByte((byte) (sendDrive ? 1 : 0));
-    out.writeByte((byte) (sendSpreadsheets ? 1 : 0));
     out.writeByte((byte) (driveSync ? 1 : 0));
     out.writeByte((byte) (driveSharePublic ? 1 : 0));
     out.writeString(driveShareEmails);
     out.writeParcelable(account, 0);
     out.writeByte((byte) (driveSuccess ? 1 : 0));
-    out.writeByte((byte) (spreadsheetsSuccess ? 1 : 0));
     out.writeString(shareUrl);
   }
 

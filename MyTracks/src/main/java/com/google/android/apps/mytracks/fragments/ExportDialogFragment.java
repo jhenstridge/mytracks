@@ -54,7 +54,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
    */
   public enum ExportType {
     GOOGLE_DRIVE(R.string.export_google_drive),
-    GOOGLE_SPREADSHEET(R.string.export_google_spreadsheets),
     EXTERNAL_STORAGE(R.string.export_external_storage);
     final int resId;
 
@@ -182,7 +181,7 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
         fragmentActivity, R.string.export_type_key, PreferencesUtils.EXPORT_TYPE_DEFAULT));
 
     if (hideDrive && exportType == ExportType.GOOGLE_DRIVE) {
-      exportType = ExportType.GOOGLE_SPREADSHEET;
+      exportType = ExportType.EXTERNAL_STORAGE;
     }
 
     exportTypeOptionsList = new ArrayList<ExportDialogFragment.ExportType>();
@@ -192,7 +191,6 @@ public class ExportDialogFragment extends AbstractMyTracksDialogFragment {
       if (!hideDrive) {
         exportTypeOptionsList.add(ExportType.GOOGLE_DRIVE);
       }
-      exportTypeOptionsList.add(ExportType.GOOGLE_SPREADSHEET);
     }
     exportTypeOptionsList.add(ExportType.EXTERNAL_STORAGE);
 

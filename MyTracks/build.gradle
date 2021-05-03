@@ -28,8 +28,6 @@ dependencies {
     compile files('libs/gdata-client-1.0.jar')
     compile files('libs/gdata-client-meta-1.0.jar')
     compile files('libs/gdata-core-1.0.jar')
-    compile files('libs/gdata-spreadsheet-3.0.jar')
-    compile files('libs/gdata-spreadsheet-meta-3.0.jar')
     compile 'com.google.api-client:google-api-client:1.13.2-beta'
     compile ('com.google.api-client:google-api-client-android:1.13.2-beta') {
         exclude group: 'com.google.android.google-play-services', module: 'google-play-services'

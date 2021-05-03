@@ -79,8 +79,6 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
   public void testSendTwoTracksWithSameActivity() {
     String testActivity = "(TestActivity)";
     EndToEndTestUtils.activityType = testActivity;
-    GoogleUtils.deleteSpreadsheets(
-        EndToEndTestUtils.trackListActivity.getApplicationContext(), GoogleUtils.ACCOUNT_1);
     EndToEndTestUtils.createSimpleTrack(1, false);
     boolean result = sendToGoogle(activityMyTracks.getString(R.string.export_google_maps))
         && sendToGoogle(activityMyTracks.getString(R.string.export_google_fusion_tables))
@@ -92,9 +90,9 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
     // Result is true mean has account bound with this device and send
     // successful.
     if (result) {
-      List<File> fileList = GoogleUtils.searchSpreadsheets(
-          activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1);
-      assertEquals(1, fileList.size());
+      //List<File> fileList = GoogleUtils.searchSpreadsheets(
+      //    activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1);
+      //assertEquals(1, fileList.size());
     }
   }
 
@@ -109,9 +107,9 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
     // Spreadsheet.
     // assertTrue(SyncTestUtils.checkFile(EndToEndTestUtils.trackName, true,
     // SyncTestUtils.getGoogleDrive(activityMyTracks.getApplicationContext())));
-    assertTrue(GoogleUtils.deleteSpreadsheetsRow(
-        activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1,
-        EndToEndTestUtils.trackName));
+    //assertTrue(GoogleUtils.deleteSpreadsheetsRow(
+    //    activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1,
+    //    EndToEndTestUtils.trackName));
   }
 
   /**

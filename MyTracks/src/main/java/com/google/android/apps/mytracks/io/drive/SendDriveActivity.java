@@ -20,7 +20,6 @@ import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.AbstractSendAsyncTask;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.io.sendtogoogle.UploadResultActivity;
-import com.google.android.apps.mytracks.io.spreadsheets.SendSpreadsheetsActivity;
 import com.google.android.apps.mytracks.util.IntentUtils;
 import com.google.android.maps.mytracks.R;
 
@@ -58,11 +57,7 @@ public class SendDriveActivity extends AbstractSendActivity {
     if (isCancel) {
       return UploadResultActivity.class;
     } else {
-      if (sendRequest.isSendSpreadsheets()) {
-        return SendSpreadsheetsActivity.class;
-      } else {
-        return UploadResultActivity.class;
-      }
+      return UploadResultActivity.class;
     }
   }
 }

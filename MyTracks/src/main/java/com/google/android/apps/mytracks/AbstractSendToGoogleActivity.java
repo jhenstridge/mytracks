@@ -28,7 +28,6 @@ import com.google.android.apps.mytracks.io.file.exporter.SaveActivity;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendRequest;
 import com.google.android.apps.mytracks.io.sendtogoogle.SendToGoogleUtils;
 import com.google.android.apps.mytracks.io.sendtogoogle.UploadResultActivity;
-import com.google.android.apps.mytracks.io.spreadsheets.SendSpreadsheetsActivity;
 import com.google.android.apps.mytracks.io.sync.SyncUtils;
 import com.google.android.apps.mytracks.services.TrackRecordingServiceConnection;
 import com.google.android.apps.mytracks.services.tasks.CheckPermissionAsyncTask;
@@ -74,7 +73,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
   private static final String TAG = AbstractMyTracksActivity.class.getSimpleName();
   private static final String SEND_REQUEST_KEY = "send_request_key";
   private static final int DRIVE_REQUEST_CODE = 0;
-  private static final int SPREADSHEETS_REQUEST_CODE = 2;
   private static final int DELETE_REQUEST_CODE = 3;
   protected static final int GOOGLE_PLAY_SERVICES_REQUEST_CODE = 4;
   protected static final int CAMERA_REQUEST_CODE = 5;
@@ -120,14 +118,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
           onPermissionFailure();
         }
         break;
-      case SPREADSHEETS_REQUEST_CODE:
-        SendToGoogleUtils.cancelNotification(this, SendToGoogleUtils.SPREADSHEETS_NOTIFICATION_ID);
-        if (resultCode == Activity.RESULT_OK) {
-          onSpreadsheetsPermissionSuccess();
-        } else {
-          onPermissionFailure();
-        }
-        break;
       case DELETE_REQUEST_CODE:
         onDeleted();
         break;
@@ -159,16 +149,8 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
 
   protected void exportTrackToGoogle(long trackId, ExportType exportType, Account account) {
     sendRequest = new SendRequest(trackId);
-    String pageView;
-    switch (exportType) {
-      case GOOGLE_DRIVE:
-        pageView = AnalyticsUtils.ACTION_EXPORT_DRIVE;
-        sendRequest.setSendDrive(true);
-        break;
-      default:
-        pageView = AnalyticsUtils.ACTION_EXPORT_SPREADSHEETS;
-        sendRequest.setSendSpreadsheets(true);
-    }
+    String pageView = AnalyticsUtils.ACTION_EXPORT_DRIVE;
+    sendRequest.setSendDrive(true);
     AnalyticsUtils.sendPageViews(this, pageView);
     sendRequest.setAccount(account);
     checkPermissions();
@@ -191,9 +173,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
   private void checkPermissions() {
     // Check Drive permission
     boolean needDrivePermission = sendRequest.isSendDrive();
-    if (!needDrivePermission) {
-      needDrivePermission = sendRequest.isSendSpreadsheets();
-    }
 
     if (needDrivePermission) {
       startCheckPermission(SendToGoogleUtils.DRIVE_SCOPE);
@@ -216,47 +195,26 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
   public void onCheckPermissionDone(String scope, boolean success, Intent userRecoverableIntent) {
     asyncTask = null;
     if (success) {
-      if (scope.equals(SendToGoogleUtils.DRIVE_SCOPE)) {
         onDrivePermissionSuccess();
-      } else {
-        onSpreadsheetsPermissionSuccess();
-      }
     } else {
       if (userRecoverableIntent != null) {
-        int requestCode;
-        if (scope.equals(SendToGoogleUtils.DRIVE_SCOPE)) {
-          requestCode = DRIVE_REQUEST_CODE;
-        } else {
-          requestCode = SPREADSHEETS_REQUEST_CODE;
-        }
-        startActivityForResult(userRecoverableIntent, requestCode);
+        startActivityForResult(userRecoverableIntent, DRIVE_REQUEST_CODE);
       } else {
         onPermissionFailure();
       }
     }
   }
 
-  private void onDrivePermissionSuccess() {
-    // Check Spreadsheets permission
-    if (sendRequest.isSendSpreadsheets()) {
-      startCheckPermission(SendToGoogleUtils.SPREADSHEETS_SCOPE);
-    } else {
-      onSpreadsheetsPermissionSuccess();
-    }
-  }
-
   /**
-   * On spreadsheets permission success. If
+   * On drive permission success. If
    * <p>
    * isSendDrive and isDriveEnableSync -> enable sync
    * <p>
    * isSendDrive -> start {@link SendDriveActivity}
    * <p>
-   * isSendSpreadsheets -> start {@link SendSpreadsheetsActivity}
-   * <p>
    * else -> start {@link UploadResultActivity}
    */
-  private void onSpreadsheetsPermissionSuccess() {
+  private void onDrivePermissionSuccess() {
     Class<?> next;
     if (sendRequest.isSendDrive()) {
       if (sendRequest.isDriveSync()) {
@@ -265,8 +223,6 @@ public abstract class AbstractSendToGoogleActivity extends AbstractMyTracksActiv
       } else {
         next = SendDriveActivity.class;
       }
-    } else if (sendRequest.isSendSpreadsheets()) {
-      next = SendSpreadsheetsActivity.class;
     } else {
       next = UploadResultActivity.class;
     }
