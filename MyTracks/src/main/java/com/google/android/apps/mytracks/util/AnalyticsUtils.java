@@ -16,7 +16,9 @@
 
 package com.google.android.apps.mytracks.util;
 
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import android.content.Context;
 
@@ -50,7 +52,7 @@ public class AnalyticsUtils {
 
   private static final String UA = "UA-7222692-2";
   private static final String PRODUCT_NAME = "android-mytracks";
-  private static GoogleAnalyticsTracker tracker;
+  private static Tracker tracker;
 
   private AnalyticsUtils() {}
 
@@ -62,16 +64,18 @@ public class AnalyticsUtils {
    */
   public static void sendPageViews(Context context, String page) {
     if (tracker == null) {
-      tracker = GoogleAnalyticsTracker.getInstance();
-      tracker.startNewSession(UA, context);
-      tracker.setProductVersion(PRODUCT_NAME, SystemUtils.getMyTracksVersion(context));
+      GoogleAnalytics analytics = GoogleAnalytics.getInstance(context);
+      tracker = analytics.newTracker(UA);
+      tracker.setAppName(PRODUCT_NAME);
+      tracker.setAppVersion(SystemUtils.getMyTracksVersion(context));
     }
-    tracker.trackPageView(page);
+    tracker.setScreenName(page);
+    tracker.send(new HitBuilders.ScreenViewBuilder().build());
   }
 
   public static void dispatch() {
     if (tracker != null) {
-      tracker.dispatch();
+      //tracker.dispatch();
     }
   }
 }
