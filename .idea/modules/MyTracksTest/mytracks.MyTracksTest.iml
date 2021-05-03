@@ -41,9 +41,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: ./MyTracksTest/libs/AndroidMockGenerator.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/antlib.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-client-1.0.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-client-meta-1.0.jar" level="project" />
-    <orderEntry type="library" name="Gradle: ./MyTracks/libs/gdata-core-1.0.jar" level="project" />
     <orderEntry type="library" name="Gradle: ./MyTracks/libs/libGoogleAnalytics.jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:23.1.1" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
