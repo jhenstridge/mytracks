@@ -15,7 +15,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
   package="com.google.android.maps.mytracks.test"
   android:versionCode="1"
   android:versionName="1.0" >
@@ -23,14 +22,9 @@ limitations under the License.
   <instrumentation
     android:name="android.test.InstrumentationTestRunner"
     android:targetPackage="com.google.android.maps.mytracks" />
-  
-  <instrumentation
-    android:name="com.google.android.apps.mytracks.endtoendtest.EndToEndTestRunner"
-    android:targetPackage="com.google.android.maps.mytracks" />
 
   <application
-    android:label="My Tracks Tests"
-    tools:replace="android:label">
+    android:label="My Tracks Tests">
     <uses-library android:name="android.test.runner" />
   </application>
 

@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile 'com.google.protobuf:protobuf-java:3.15.8'
+    api 'com.google.protobuf:protobuf-java:3.15.8'
 }
 
 

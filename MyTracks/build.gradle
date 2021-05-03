@@ -19,18 +19,17 @@ android {
 }
 
 dependencies {
-    compile project(':MyTracksLib')
-    compile 'com.android.support:support-v4:21.0.3'
-    compile 'com.google.code.gson:gson:2.1'
-    compile 'com.google.guava:guava-jdk5:13.0'
-    compile 'com.google.android.gms:play-services:5.0.89'
-    compile files('libs/antlib.jar')
-    compile 'com.google.api-client:google-api-client:1.13.2-beta'
-    compile ('com.google.api-client:google-api-client-android:1.13.2-beta') {
+    api project(':MyTracksLib')
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.google.code.gson:gson:2.1'
+    implementation 'com.google.guava:guava-jdk5:13.0'
+    api 'com.google.android.gms:play-services:5.0.89'
+    implementation files('libs/antlib.jar')
+    api ('com.google.api-client:google-api-client-android:1.13.2-beta') {
         exclude group: 'com.google.android.google-play-services', module: 'google-play-services'
     }
-    compile 'com.google.apis:google-api-services-drive:v2-rev64-1.13.2-beta'
-    compile 'com.google.http-client:google-http-client-gson:1.20.0'
-    compile 'com.google.code.findbugs:jsr305:3.0.2'
-    compile files('libs/libGoogleAnalytics.jar')
+    api 'com.google.apis:google-api-services-drive:v2-rev64-1.13.2-beta'
+    implementation 'com.google.http-client:google-http-client-gson:1.20.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation files('libs/libGoogleAnalytics.jar')
 }
