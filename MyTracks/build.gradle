@@ -30,10 +30,7 @@ dependencies {
         exclude group: 'com.google.android.google-play-services', module: 'google-play-services'
     }
     compile 'com.google.apis:google-api-services-drive:v2-rev64-1.13.2-beta'
-    compile 'com.google.http-client:google-http-client:1.20.0'
-    compile 'com.google.http-client:google-http-client-android:1.20.0'
     compile 'com.google.http-client:google-http-client-gson:1.20.0'
-    compile 'com.google.oauth-client:google-oauth-client:1.13.1-beta'
     compile 'com.google.code.findbugs:jsr305:3.0.2'
     compile files('libs/libGoogleAnalytics.jar')
 }

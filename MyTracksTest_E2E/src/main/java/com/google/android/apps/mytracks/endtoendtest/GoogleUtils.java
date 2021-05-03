@@ -18,10 +18,7 @@ package com.google.android.apps.mytracks.endtoendtest;
 
 import com.google.android.apps.mytracks.io.sendtogoogle.SendToGoogleUtils;
 import com.google.android.apps.mytracks.io.sync.SyncUtils;
-import com.google.android.apps.mytracks.util.SystemUtils;
 import com.google.android.maps.mytracks.R;
-import com.google.api.client.auth.oauth2.BearerToken;
-import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
