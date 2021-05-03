@@ -73,34 +73,10 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
   }
 
   /**
-   * Sends two tracks with same activity. Two tracks should be in the same
-   * spreadsheet.
-   */
-  public void testSendTwoTracksWithSameActivity() {
-    String testActivity = "(TestActivity)";
-    EndToEndTestUtils.activityType = testActivity;
-    EndToEndTestUtils.createSimpleTrack(1, false);
-    boolean result = sendToGoogle(activityMyTracks.getString(R.string.export_google_maps))
-        && sendToGoogle(activityMyTracks.getString(R.string.export_google_fusion_tables))
-        && sendToGoogle(activityMyTracks.getString(R.string.export_google_spreadsheets));
-    result = result && sendToGoogle(activityMyTracks.getString(R.string.export_google_maps))
-        && sendToGoogle(activityMyTracks.getString(R.string.export_google_fusion_tables))
-        && sendToGoogle(activityMyTracks.getString(R.string.export_google_spreadsheets));
-
-    // Result is true mean has account bound with this device and send
-    // successful.
-    if (result) {
-      //List<File> fileList = GoogleUtils.searchSpreadsheets(
-      //    activityMyTracks.getApplicationContext(), GoogleUtils.ACCOUNT_1);
-      //assertEquals(1, fileList.size());
-    }
-  }
-
-  /**
    * Checks the process of sending track to google.
    */
   private void checkSendTrackToGoogle() {
-    if (!sendToGoogle(activityMyTracks.getString(R.string.export_google_spreadsheets))) {
+    if (!sendToGoogle(activityMyTracks.getString(R.string.export_google_drive))) {
       return;
     }
     // Check whether all data is correct on Google Drive, Documents, and
@@ -152,14 +128,8 @@ public class ExportSingleTrackTest extends ActivityInstrumentationTestCase2<Trac
             activityMyTracks.getString(R.string.generic_progress_title), 1,
             EndToEndTestUtils.SHORT_WAIT_TIME)) {}
 
-    if (exportDestination.endsWith(activityMyTracks.getString(R.string.export_google_maps))) {
-      // Check whether the result dialog is display.
-      assertTrue(EndToEndTestUtils.SOLO.waitForText(activityMyTracks
-          .getString(R.string.share_track_share_url)));
-    } else {
-      assertTrue(EndToEndTestUtils.SOLO.waitForText(activityMyTracks
-          .getString(R.string.generic_success_title)));
-    }
+    assertTrue(EndToEndTestUtils.SOLO.waitForText(activityMyTracks
+        .getString(R.string.generic_success_title)));
     EndToEndTestUtils
         .getButtonOnScreen(activityMyTracks.getString(R.string.generic_ok), true, true);
     return true;
