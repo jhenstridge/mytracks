@@ -35,6 +35,7 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -141,7 +142,7 @@ public class SendToGoogleUtils {
    */
   public static GoogleAccountCredential getGoogleAccountCredential(
       Context context, String accountName, String scope) throws IOException, GoogleAuthException {
-    GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(context, scope);
+    GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(context, Collections.singleton(scope));
     credential.setSelectedAccountName(accountName);
     credential.getToken();
     return credential;
@@ -156,7 +157,7 @@ public class SendToGoogleUtils {
    */
   public static String getToken(Context context, String accountName, String scope)
       throws IOException, GoogleAuthException {
-    GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(context, scope);
+    GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(context, Collections.singleton(scope));
     credential.setSelectedAccountName(accountName);
     return credential.getToken();
   }
