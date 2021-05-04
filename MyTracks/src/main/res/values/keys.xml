@@ -16,7 +16,6 @@ limitations under the License.
 -->
 <resources>
   <!-- Keys for persisted preferences. Sorted alphabetically. DO NOT TRANSLATE. -->
-  <string name="allow_access_key">allowAccess</string>
   <string name="auto_resume_track_timeout_key">autoResumeTrackTimeout</string>
   <string name="chart_show_cadence_key">chartShowCadence</string>
   <string name="chart_show_elevation_key">chartShowElevation</string>

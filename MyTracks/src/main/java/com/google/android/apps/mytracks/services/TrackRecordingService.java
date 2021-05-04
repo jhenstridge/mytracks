@@ -1161,10 +1161,6 @@ public class TrackRecordingService extends Service {
     Intent intent = new Intent().setAction(getString(actionId))
         .putExtra(getString(R.string.track_id_broadcast_extra), trackId);
     sendBroadcast(intent, getString(R.string.permission_notification_value));
-    if (PreferencesUtils.getBoolean(
-        this, R.string.allow_access_key, PreferencesUtils.ALLOW_ACCESS_DEFAULT)) {
-      sendBroadcast(intent, getString(R.string.broadcast_notifications_permission));
-    }
   }
 
   /**
@@ -1352,12 +1348,7 @@ public class TrackRecordingService extends Service {
       if (trackRecordingService == null) {
         throw new IllegalStateException("The track recording service has been detached!");
       }
-      if (Process.myPid() == Binder.getCallingPid()) {
-        return true;
-      } else {
-        return PreferencesUtils.getBoolean(trackRecordingService, R.string.allow_access_key,
-            PreferencesUtils.ALLOW_ACCESS_DEFAULT);
-      }
+      return Process.myPid() == Binder.getCallingPid();
     }
 
     /**

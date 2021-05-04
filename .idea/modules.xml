@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mytracks.iml" filepath="$PROJECT_DIR$/.idea/modules/mytracks.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyTracks/mytracks.MyTracks.iml" filepath="$PROJECT_DIR$/.idea/modules/MyTracks/mytracks.MyTracks.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyTracksApiSample/mytracks.MyTracksApiSample.iml" filepath="$PROJECT_DIR$/.idea/modules/MyTracksApiSample/mytracks.MyTracksApiSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyTracksLib/mytracks.MyTracksLib.iml" filepath="$PROJECT_DIR$/.idea/modules/MyTracksLib/mytracks.MyTracksLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyTracksTest/mytracks.MyTracksTest.iml" filepath="$PROJECT_DIR$/.idea/modules/MyTracksTest/mytracks.MyTracksTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyTracksTest_E2E/mytracks.MyTracksTest_E2E.iml" filepath="$PROJECT_DIR$/.idea/modules/MyTracksTest_E2E/mytracks.MyTracksTest_E2E.iml" />

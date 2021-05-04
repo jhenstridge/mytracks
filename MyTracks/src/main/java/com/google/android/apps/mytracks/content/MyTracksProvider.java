@@ -432,12 +432,7 @@ public class MyTracksProvider extends ContentProvider {
    * Returns true if the caller can access the content provider.
    */
   private boolean canAccess() {
-    if (Binder.getCallingPid() == Process.myPid()) {
-      return true;
-    } else {
-      return PreferencesUtils.getBoolean(
-          getContext(), R.string.allow_access_key, PreferencesUtils.ALLOW_ACCESS_DEFAULT);
-    }
+    return Binder.getCallingPid() == Process.myPid();
   }
 
   /**

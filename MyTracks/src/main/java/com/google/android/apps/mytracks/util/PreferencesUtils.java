@@ -42,7 +42,6 @@ public class PreferencesUtils {
    * Preferences values. The defaults need to match the defaults in the xml
    * files.
    */
-  public static final boolean ALLOW_ACCESS_DEFAULT = false;
   public static final int AUTO_RESUME_TRACK_CURRENT_RETRY_DEFAULT = 0;
 
   // Values for auto_resume_track_timeout_key
@@ -67,7 +66,6 @@ public class PreferencesUtils {
   public static final boolean DRIVE_SYNC_DEFAULT = false;
 
   public static final String EXPORT_EXTERNAL_STORAGE_FORMAT_DEFAULT = TrackFileFormat.KML.name();
-  public static final boolean EXPORT_GOOGLE_MAPS_PUBLIC_DEFAULT = false;
   public static final String EXPORT_TYPE_DEFAULT = ExportType.GOOGLE_DRIVE.name();
   
   // Value for split_frequency_key and voice_frequency_key

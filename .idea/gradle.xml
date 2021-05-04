@@ -12,7 +12,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/MyTracks" />
-            <option value="$PROJECT_DIR$/MyTracksApiSample" />
             <option value="$PROJECT_DIR$/MyTracksLib" />
             <option value="$PROJECT_DIR$/MyTracksTest" />
             <option value="$PROJECT_DIR$/MyTracksTest_E2E" />
