@@ -35,6 +35,9 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../MyTracks/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../MyTracks/src/main/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../MyTracks/build/generated/res/resValues/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../MyTracks/src/main/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../MyTracks/build/generated/aidl_source_output_dir/debug/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../MyTracks/build/generated/source/proto/debug/java" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracks/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../MyTracks/build" />
     </content>
@@ -74,6 +77,5 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui:26.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-compat:26.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime:1.0.0@aar" level="project" />
-    <orderEntry type="module" module-name="mytracks.MyTracksLib" />
   </component>
 </module>

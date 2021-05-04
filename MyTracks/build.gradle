@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion 26
@@ -23,7 +24,6 @@ android {
 }
 
 dependencies {
-    api project(':MyTracksLib')
     implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.guava:guava:29.0-android'
@@ -33,4 +33,20 @@ dependencies {
     api 'com.google.apis:google-api-services-drive:v2-rev393-1.25.0'
     implementation 'com.google.http-client:google-http-client-gson:1.25.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    api 'com.google.protobuf:protobuf-java:3.15.8'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.15.8'
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option "lite"
+                }
+            }
+        }
+    }
 }

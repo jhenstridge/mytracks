@@ -1,4 +1,3 @@
-include ':MyTracksLib'
 include ':MyTracks'
 include ':MyTracksTest'
 include ':MyTracksTest_E2E'

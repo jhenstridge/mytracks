@@ -63,7 +63,6 @@
     <orderEntry type="library" name="Gradle: com.android.support.test:runner:0.5@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support.test:exposed-instrumentation-api-publish:0.5@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services:5.0.89@aar" level="project" />
-    <orderEntry type="module" module-name="mytracks.MyTracksLib" />
     <orderEntry type="module" module-name="mytracks.MyTracks" />
   </component>
 </module>
