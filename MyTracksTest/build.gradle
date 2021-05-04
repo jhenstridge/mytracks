@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 26
 
         testApplicationId 'com.google.android.maps.mytracks.test'
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
